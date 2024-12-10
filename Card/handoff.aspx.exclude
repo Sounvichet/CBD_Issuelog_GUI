@@ -1,0 +1,175 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content.master" AutoEventWireup="true" CodeFile="handoff.aspx.cs" Inherits="Card_handoff" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+      <section class="content">
+              <div class="row">
+                            <div class="col-xs-12">
+                                   <div class="box">
+                                            <div class="box-header">
+                                                 <h3 class="box-title">Generate Hand_off</h3>
+                                             </div>
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class ="col-md-6">
+                                                    <asp:Button ID="btn_func1" runat="server" Text="1.Validate Data" CssClass="btn btn-sm btn-primary" OnClick="btn_func1_Click"></asp:Button>
+                                                    <asp:Button ID="btn_func2" runat="server" Text="2.Move to A.HandOff, B.ReqPending, C.ReqIssued" CssClass="btn btn-sm btn-primary" OnClick="btn_func2_Click"></asp:Button>
+                                                    <asp:Button ID="btn_func3" runat="server" Text="3.Generate HandOff" CssClass="btn btn-sm btn-primary" OnClick="btn_func3_Click"></asp:Button>
+                                                </div>
+                                                <div class ="col-md-6" align="right">
+                                                  <asp:Button ID="btn_func4" runat="server" Text="1.Validate Pending Data" CssClass="btn btn-sm btn-primary" OnClick="btn_func4_Click"></asp:Button>
+                                                  <asp:Button ID="btn_func5" runat="server" Text="2.Move Pending to Pre" CssClass="btn btn-sm btn-primary" OnClick="btn_func5_Click"></asp:Button>
+                                                </div>
+                                            </div>
+                                            <p></p>
+                                            <div class="row">
+                                                <div class ="col-md-3">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <asp:Button ID="btn_func6" runat="server" Text="Find Account &Issued Card" CssClass="btn btn-sm btn-primary" Width="230px" OnClick="btn_func6_Click"></asp:Button>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>
+                                                                <asp:Button ID="btn_func7" runat="server" Text="Find &Duplicate Account Number" CssClass="btn btn-sm btn-primary" Width="230px" OnClick="btn_func7_Click"></asp:Button>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>
+                                                                <asp:Button ID="btn_func8" runat="server" Text="Find Acc_HandOff Without Cust_HandOff" CssClass="btn btn-sm btn-primary" Width="230px" OnClick="btn_func8_Click"></asp:Button>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-3" align="right">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <asp:Label ID="Label1" runat="server" Text="IA:Invalid Account"></asp:Label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <asp:Label ID="Label2" runat="server" Text="UA:UnCheck ATM"></asp:Label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <asp:Label ID="Label3" runat="server" Text="CA:Check ATM"></asp:Label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <asp:Label ID="Label4" runat="server" Text="Status"></asp:Label>
+                                                                <asp:DropDownList ID="D_Status" runat="server" CssClass="textboxstyle" AutoPostBack="true" OnSelectedIndexChanged="D_Status_SelectedIndexChanged">
+                                                                    <asp:ListItem>Select</asp:ListItem>
+                                                                    <asp:ListItem>IA</asp:ListItem>
+                                                                    <asp:ListItem>UA</asp:ListItem>
+                                                                    <asp:ListItem>CA</asp:ListItem>
+                                                                </asp:DropDownList>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+                                                <div class="col-md-6" align="right">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <asp:Label ID="Label5" runat="server" Text="ID :"></asp:Label>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox ID="T_ID" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                               <%-- <asp:Label ID="L_ID" runat="server" ForeColor="Red"></asp:Label>--%>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button4" runat="server" Text="Find" CssClass="btn btn-sm btn-primary" Width="50px" OnClick="Button4_Click"></asp:Button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <asp:Label ID="Label6" runat="server" Text="Account_Number :"></asp:Label>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox ID="T_accountnum" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button5" runat="server" Text="Update" CssClass="btn btn-sm btn-primary" Width="50px" OnClick="Button5_Click"></asp:Button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <asp:Label ID="Label7" runat="server" Text="Description :"></asp:Label>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox ID="T_desc" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button6" runat="server" Text="Delete" CssClass="btn btn-sm btn-primary" Width="50px" ForeColor="Red" OnClick="Button6_Click"></asp:Button>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                            <hr />
+
+                                            <div class="row">
+                                               <div class="col-lg-12">
+                                                  <div class ="table-responsive">
+                                                        <asp:GridView ID="grid1" CssClass="table table-bordered table-striped" runat="server" Font-Size="Small" AutoGenerateColumns="true" GridLines="None" RowStyle-Wrap="false" onpageindexchanging="grid1_PageIndexChanging" onselectedindexchanged="grid1_SelectedIndexChanged">
+                                                   <AlternatingRowStyle BackColor="White" />
+                                                   <Columns>
+
+                                                      <%--   <asp:TemplateField>
+                                                                        <HeaderTemplate>
+                                                                            <asp:Label ID="Label4" runat="server" Text="Edit"></asp:Label>
+                                                                        </HeaderTemplate>
+                                                                        <ItemTemplate>
+                                                                          <asp:LinkButton Text="edit" ID="lnkSelect" runat="server" CommandName="Select"  />
+                                                                        </ItemTemplate>
+                                                        </asp:TemplateField>--%>
+
+                                                         <asp:TemplateField>
+                                                         <HeaderTemplate>
+                                                            <asp:Label ID="Label4" runat="server" Text="Edit"></asp:Label>
+                                                         </HeaderTemplate>
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="lnkSelect" runat="server" CommandName="Select" ><i class= "fa fa-pencil"></i></asp:LinkButton>
+                                                        </ItemTemplate>
+                                                        </asp:TemplateField>
+
+                                                    </Columns>
+
+                                                   <RowStyle BackColor="#EFF3FB" />
+                                                   <EditRowStyle BackColor="#2461BF" />
+                                                   <FooterStyle BackColor="#507CD1" ForeColor="White" Font-Bold="True" />
+                                                   <PagerStyle ForeColor="White" HorizontalAlign="Center" BackColor="#2461BF" />
+                                                   <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                   <HeaderStyle BackColor="#507CD1" Font-Bold="true" ForeColor="White" />
+                                                   <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                                   <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                                   <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                                   <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                                   <PagerStyle HorizontalAlign = "left" CssClass = "GridPager" />
+                                                    </asp:GridView>
+                                                   </div>
+                                                   </div>
+                                               </div>
+
+                                               <div class="row">
+                                                   <div class="col-lg-12">
+                                                    <asp:Label ID="Label8" runat="server" Text="Records:" ForeColor="#3333FF" Visible="true"></asp:Label>
+                                                    <asp:Label ID="Label9" runat="server" Visible="true" ForeColor="Blue"></asp:Label>
+                                                   </div>
+                                               </div>
+
+                                        </div>
+                                   </div>
+                            </div>
+             </div>
+     </section>
+</asp:Content>
+

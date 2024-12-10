@@ -1,0 +1,244 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.OracleClient;
+using System.Data;
+using System.Runtime.InteropServices;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
+using ClosedXML.Excel;
+using System.Data.SqlClient;
+using TicketClassLibrary;
+using CardClass;
+public partial class Card_handoff : System.Web.UI.Page
+{
+    OracleConnection obj1 = new OracleConnection();
+    logger _logger = new logger();
+    Card_Module obj2 = new Card_Module();
+    dbcon obj3 = new dbcon();
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Session["USER_NAME"] == null)
+        {
+            ClientScript.RegisterStartupScript(GetType(), "Load", "<script type='text/javascript'>window.location.href = '../issuelog/Default.aspx'; </script>");
+        }
+        Label9.Text = grid1.Rows.Count.ToString();
+    }
+    private void Validate_Pending_Data()
+    {
+        grid1.DataSource = obj2.Validate_Pending_Data();
+        grid1.DataBind();
+        Label9.Text = grid1.Rows.Count.ToString();
+    }
+    private void Validate_Data()
+    {
+        grid1.DataSource = obj2.Validate_Data();
+        grid1.DataBind();
+        Label9.Text = grid1.Rows.Count.ToString();
+    }
+    protected void grid1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        GridViewRow row = grid1.SelectedRow;
+        T_ID.Text = row.Cells[1].Text;
+        T_accountnum.Text = row.Cells[4].Text;
+        T_desc.Text = row.Cells[5].Text;
+    }
+    protected void grid1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        grid1.PageIndex = e.NewPageIndex;
+        this.BindGrid();
+
+    }
+    private void BindGrid()
+    {
+        grid1.DataSource = obj2.Validate_Pending_Data();
+        grid1.DataBind();
+        Label9.Text = grid1.Rows.Count.ToString();
+    }
+    private void btn_Moveto_Handoff()
+    {
+        DataTable dt1 = new DataTable();
+        DataTable dt2 = new DataTable();
+        DataTable dt3 = new DataTable();
+        DataTable dt4 = new DataTable();
+        dt1 =  obj2.P_ReqPre_MoveTo_ReqForm();
+        dt2 =  obj2.P_ReqPre_MoveTo_Pending();
+        dt3 =  obj2.P_ReqPre_MoveTo_Issued();
+        dt4 =  obj2.P_Move_ReqForm_TO_ReqForm_hist();
+
+
+
+    }
+    private  void exportexcel_Gernerate_HardOff()
+    {
+        XLWorkbook wb = new XLWorkbook();
+        DataTable dt1 = new DataTable();
+        DataTable dt2 = new DataTable();
+        dt1 = obj2.P_Reqfrm_Gen_Cust_HandOff();
+        dt2 = obj2.P_Reqfrm_Gen_Acc_HandOff();
+        wb.Worksheets.Add(dt1, "P_Reqfrm_Gen_Cust_HandOff");
+        wb.Worksheets.Add(dt2, "P_Reqfrm_Gen_Acc_HandOff");
+        //wb.Worksheets.Add(dt, "Ticket View")
+        Response.Clear();
+        Response.Buffer = true;
+        Response.Charset = "";
+        Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+        Response.AddHeader("content-disposition", "attachment;filename=3.Generate_HandOff.xlsx");
+        System.IO.MemoryStream memory = new System.IO.MemoryStream();
+        wb.SaveAs(memory);
+        memory.WriteTo(Response.OutputStream);
+        Response.Flush();
+        Response.End();
+    }
+    private void Move_Pending_To_ReqPre ()
+    {
+        grid1.DataSource = obj2.P_Move_Pending_To_ReqPre();
+        grid1.DataBind();
+        Label9.Text = grid1.Rows.Count.ToString();
+    }
+    private void Find_status()
+    {
+        grid1.DataSource = obj2.P_ReqPre_Find_Status(D_Status.SelectedValue);
+        grid1.DataBind();
+        Label9.Text = grid1.Rows.Count.ToString();
+    }
+    private void Find_account()
+    {
+        grid1.DataSource = obj2.P_ReqPre_Find_Acc(T_accountnum.Text);
+        grid1.DataBind();
+        Label9.Text = grid1.Rows.Count.ToString();
+    }
+    private void deleteID ()
+    {
+        obj2.P_ReqPre_Delete_Acc(T_ID.Text);
+    }
+    private void P_ReqPre_Find_Dupli_Acc()
+    {
+        grid1.DataSource = obj2.P_ReqPre_Find_Dupli_Acc();
+        grid1.DataBind();
+        Label9.Text = grid1.Rows.Count.ToString();
+    }
+    private void P_Val_Acc_Without_Cust_HandOff()
+    {
+        grid1.DataSource = obj2.P_Val_Acc_Without_Cust_HandOff();
+        grid1.DataBind();
+        Label9.Text = grid1.Rows.Count.ToString();
+    }
+    private void P_ReqPre_Update_Acc()
+        {
+        obj2.P_ReqPre_Update_Acc(T_ID.Text, T_accountnum.Text, T_desc.Text);
+        }
+
+    private void MsgBox()
+    {
+        string msg = "<script language=\"javascript\">";
+        msg += "alert('" + "Move Successful"  +".\\n\\" +
+                      "P_ReqPre_MoveTo_ReqForm" + ".\\n\\" +
+                      "P_ReqPre_MoveTo_Pending" + ".\\n\\" +
+                      "P_ReqPre_MoveTo_Issued" + ".\\n\\" +
+                      "P_Move_ReqForm_TO_ReqForm_hist";
+        msg += "');</script>";
+        Response.Write(msg);
+    }
+    public void btn_Moveto_Handoff(string procedure, string SMS_Alert)
+    {
+        DataTable ds = new DataTable();
+        try
+        {
+            obj1.ConnectionString = obj3.oracleconcbs();
+            obj1.Open();
+            OracleDataAdapter da = new OracleDataAdapter("", obj1);
+            da.SelectCommand.CommandText = procedure;
+            da.SelectCommand.CommandType = CommandType.StoredProcedure;
+            da.Fill(ds);
+            MsgBox(SMS_Alert, this.Page, "Move_success");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            obj1.Close();
+
+        }
+    }
+    public void MsgBox(String ex, Page pg, Object obj)
+    {
+        string s = "<SCRIPT language='javascript'>alert('" + ex.Replace("\r\n", "\\n").Replace("'", "") + "'); </SCRIPT>";
+        Type cstype = obj.GetType();
+        ClientScriptManager cs = pg.ClientScript;
+        cs.RegisterClientScriptBlock(cstype, s, s.ToString());
+    }
+    protected void btn_func1_Click(object sender, EventArgs e)
+    {
+        Validate_Data();
+    }
+    protected void btn_func4_Click(object sender, EventArgs e)
+    {
+        Validate_Pending_Data();
+    }
+    protected void btn_func6_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Card/find_acc_issue_card.aspx");
+    }
+
+    protected void btn_func7_Click(object sender, EventArgs e)
+    {
+        P_ReqPre_Find_Dupli_Acc();
+    }
+    protected void btn_func8_Click(object sender, EventArgs e)
+    {
+        P_Val_Acc_Without_Cust_HandOff();
+    }
+    protected void btn_func2_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            btn_Moveto_Handoff("HKL_PKG_CARD_PRODCTION.P_ReqPre_MoveTo_ReqForm", "Data was Moved Sucessfully to, A.Table_HandOff.");
+            btn_Moveto_Handoff("HKL_PKG_CARD_PRODCTION.P_ReqPre_MoveTo_Pending", "Data was Moved Sucessfully to, B.Table_Pending.");
+            btn_Moveto_Handoff("HKL_PKG_CARD_PRODCTION.P_ReqPre_MoveTo_Issued", "Data was Moved Sucessfully to, C.Table_Issued.");
+            Response.Write("<script>alert('Moved Successful!!')</script>");
+            Server.Transfer("~/Card/Handoff.aspx");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+    }
+
+    protected void btn_func3_Click(object sender, EventArgs e)
+    {
+        exportexcel_Gernerate_HardOff();
+    }
+
+    protected void btn_func5_Click(object sender, EventArgs e)
+    {
+        Move_Pending_To_ReqPre();
+    }
+
+    protected void D_Status_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Find_status();
+    }
+
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+        Find_account();
+    }
+
+    protected void Button6_Click(object sender, EventArgs e)
+    {
+        deleteID();
+        P_ReqPre_Find_Dupli_Acc();
+    }
+
+    protected void Button5_Click(object sender, EventArgs e)
+    {
+        P_ReqPre_Update_Acc();
+    }
+}

@@ -1,0 +1,204 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Test_API.aspx.cs" Inherits="Test_API" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="<%= Page.ResolveUrl ("~/CSS/bootstrap.min.css") %>" rel="stylesheet" type="text/css" />
+    <link href="<%= Page.ResolveUrl ("~/CSS/AdminLTE.min.css") %>" rel="stylesheet" type="text/css" />
+      <style type="text/css">
+         .textboxstyle
+            {
+                font-size:15px;
+                border-radius:5px 5px 5px 5px;
+                border:1px solid #c4c4c4;
+                padding:2px 2px 2px 2px;
+                }
+            .textboxstyle:focus
+            {
+                border:1px solid #7bc1f7;
+            }
+             textarea
+        {
+            resize: none;
+        }
+             .user-control
+         {
+         padding-top:5px;
+         }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        
+            <section class="content">
+                        <div class="row">
+                        <div class="col-md-12">
+                                <div class="box box-primary">
+                                        <div class="box-body box-profile">
+                                        <div class="box-header">
+                                                <h3 class="box-title" style="color:blue">TEST Wing Loan Inquiry</h3>
+                                            </div>
+                                            <div class="box-body">
+                                                <div class ="row">
+                                                    <div class="col-md-12">
+                                                        <asp:Button  ID="btn" runat="server" class="btn btn-sm btn-primary" OnClick="btn_Click" Text ="test"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class ="row">
+                                                    <div class="col-md-3">
+                                                        Partner_ID
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <asp:TextBox ID="T_Partner_ID" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        Loan_Number
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <asp:TextBox ID="T_req_Loan_Number" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                    </div>
+                                                </div>
+
+                                                <div class ="row">
+                                                    <div class="col-md-3">
+                                                        Currency
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <asp:TextBox ID="T_req_Currency" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                    </div>
+                                                </div>
+
+
+                                                     <div class="row user-control">
+                                                        <div class="col-lg-12 textboxstyle" style="background-color:cornflowerblue;height:inherit">
+                                                            <label id="lblProbleminfo">Response Wing API</label>
+                                                        </div>
+                                                    </div>
+
+                                                <div class="row user-control">
+                                                    <div class="col-md-3">
+                                                        Loan_number
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <asp:TextBox ID="t_loan_number" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        Loan_currency
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <asp:TextBox ID="t_loan_currency" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                    </div>
+                                                </div>
+
+                                                 <div class="row">
+                                                    <div class="col-md-3">
+                                                        Loan_name
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <asp:TextBox ID="T_loan_name" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        Loan_DueDate
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <asp:TextBox ID="T_Loan_DueDate" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                    </div>
+                                                </div>
+
+
+                                                   <div class="row">
+                                                    <div class="col-md-3">
+                                                        Payment_amount
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <asp:TextBox ID="T_Payment_amount" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        Settle_code
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <asp:TextBox ID="T_Settle_code" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                    </div>
+                                                </div>
+
+                                                  <div class="row">
+                                                    <div class="col-md-3">
+                                                        Settle_account
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <asp:TextBox ID="T_Settle_account" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        Settle_Currency
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <asp:TextBox ID="T_Settle_Currency" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                    </div>
+                                                </div>
+
+                                                 <div class="row">
+                                                    <div class="col-md-3">
+                                                        Resp_code
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <asp:TextBox ID="T_Resp_code" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        Resp_Msg
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <asp:TextBox ID="T_Resp_Msg" runat="server" CssClass="textboxstyle"></asp:TextBox>
+                                                    </div>
+                                                </div>
+
+                                                    <div class="row user-control">
+                                                        <div class="col-lg-12 textboxstyle" style="background-color:cornflowerblue;height:inherit">
+                                                            <label id="lblappmaster">CLTB_ACCOUNT_APPS_MASTER</label>
+                                                        </div>
+                                                    </div>
+
+                                               <div class="row">
+                                                   <div class="col-md-12">
+                                                       <div class="widget-contain table-responsive">
+                                                              <asp:GridView ID="grid1" CssClass="table table-bordered table-hover" runat="server" Font-Size="Smaller" AutoGenerateColumns="true" GridLines="None" RowStyle-Wrap="false">
+                                                                    <AlternatingRowStyle BackColor="White" />
+                                                                            <Columns>
+                                                                            </Columns>
+                                                              </asp:GridView>
+                                                            </div>
+                                                   </div>
+                                               </div>
+
+
+                                                   <div class="row user-control">
+                                                        <div class="col-lg-12 textboxstyle" style="background-color:cornflowerblue;height:inherit">
+                                                            <label id="lblconponentlaon">Cltb_Account_Components</label>
+                                                        </div>
+                                                    </div>
+
+                                               <div class="row">
+                                                   <div class="col-md-12">
+                                                       <div class="widget-contain table-responsive">
+                                                              <asp:GridView ID="grid2" CssClass="table table-bordered table-hover" runat="server" Font-Size="Smaller" AutoGenerateColumns="true" GridLines="None" RowStyle-Wrap="false">
+                                                                    <AlternatingRowStyle BackColor="White" />
+                                                                            <Columns>
+                                                                            </Columns>
+                                                              </asp:GridView>
+                                                            </div>
+                                                   </div>
+                                               </div>
+
+
+                                           </div>
+                                        </div>
+                                </div>
+                        </div>
+                    </div>
+                </section>
+            
+    </form>
+</body>
+</html>

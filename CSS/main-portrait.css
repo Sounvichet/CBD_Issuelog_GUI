@@ -1,0 +1,28 @@
+/* main.css */
+body {
+ 
+}
+
+/* override styles when printing */
+@media print {
+
+  body {
+    margin: 0;
+    
+        }
+   @page {
+        size : A4;
+        }
+    .landScape
+            {
+                width: 100%;
+                height: 100%;
+                margin: 0% 0% 0% 0%;
+                filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=3);
+            }
+    .n-print {
+                display: none;
+            }
+    
+
+}

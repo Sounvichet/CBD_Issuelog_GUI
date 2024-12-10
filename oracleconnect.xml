@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<connection>
+
+	<connectionoracle_FESB>
+		Data Source=(DESCRIPTION=
+		(ADDRESS=(PROTOCOL=TCP)(HOST=dcexa-scan1)(PORT=1734))
+		(CONNECT_DATA=
+		(SERVER=DEDICATED)
+		(SERVICE_NAME=svrptro)));
+		User Id=SVREPORT;Password=SVR#07Nov!20#24rPT
+	</connectionoracle_FESB>
+
+	<connectionoracle_FEDB>
+		Data Source=(DESCRIPTION=
+		(ADDRESS=(PROTOCOL=TCP)(HOST=172.16.30.20)(PORT=1568))
+		(CONNECT_DATA=
+		(SERVER=DEDICATED)
+		(SERVICE_NAME=fedb)));
+		User Id=report;Password=Fl!e#X27Ja!N20#22RpT
+
+	</connectionoracle_FEDB>
+
+
+	<connectionOracle_HKLPRD>
+
+		Data Source=(DESCRIPTION=
+		(ADDRESS=(PROTOCOL=TCP)(HOST=DREXA-SCAN1)(PORT=1734))
+		(CONNECT_DATA=
+		(SERVER=DEDICATED)
+		(SERVICE_NAME=CBSFCRPTRW)));
+		User Id=FLEXRPT2;Password=FLeX!07Nov#20!24rPT
+
+		<!--Data Source=(DESCRIPTION=
+	  (ADDRESS=(PROTOCOL=TCP)(HOST=172.16.10.10)(PORT=1568))
+	  (CONNECT_DATA=
+	  (SERVER=DEDICATED)
+	  (SERVICE_NAME=HKLPRD)));
+	  User Id=FCJHKLRPT2;Password=Fl!e#X27Ja!N20#22RpT-->
+
+		<!--Data Source=(DESCRIPTION=
+	  (ADDRESS=(PROTOCOL=TCP)(HOST=172.16.16.10)(PORT=1568))
+	  (CONNECT_DATA=
+	  (SERVER=DEDICATED)
+	  (SERVICE_NAME=HKLDR)));
+	  User Id=FCJHKLRPT2;Password=Fl!e#X27Ja!N20#22RpT-->
+
+	</connectionOracle_HKLPRD>
+
+	<connectionOracle_HKLDR>
+		Data Source=(DESCRIPTION=
+		(ADDRESS=(PROTOCOL=TCP)(HOST=172.16.16.10)(PORT=1568))
+		(CONNECT_DATA=
+		(SERVER=DEDICATED)
+		(SERVICE_NAME=HKLDR)));
+		User Id=FCJHKLRPT2;Password=Fl!e#X27Ja!N20#22RpT
+	</connectionOracle_HKLDR>
+
+
+	<connectionOracle_CBSUAT3>
+		Data Source=(DESCRIPTION=
+		(ADDRESS=(PROTOCOL=TCP)(HOST=172.16.10.30)(PORT=1568))
+		(CONNECT_DATA=
+		(SERVER=DEDICATED)
+		(SERVICE_NAME=HKLUAT3)));
+		User Id=FCJHKLRPT2;Password=Fl!e#X27Ja!N20#22RpT
+	</connectionOracle_CBSUAT3>
+
+	<connectionOracle_CBSUAT5>
+		Data Source=(DESCRIPTION=
+		(ADDRESS=(PROTOCOL=TCP)(HOST=172.16.11.1)(PORT=1521))
+		(CONNECT_DATA=
+		(SERVER=DEDICATED)
+		(SERVICE_NAME=HKLUAT5)));
+		User Id=FCJHKLRPT2;Password=Fl!e#X27Ja!N20#22RpT
+	</connectionOracle_CBSUAT5>
+
+	<connectionOracle_CBSUAT1>
+		Data Source=(DESCRIPTION=
+		(ADDRESS=(PROTOCOL=TCP)(HOST=172.16.11.1)(PORT=1521))
+		(CONNECT_DATA=
+		(SERVER=DEDICATED)
+		(SERVICE_NAME=HKLUAT1)));
+		User Id=FCJHKLRPT2;Password=B3$$t4HTtha$168!
+	</connectionOracle_CBSUAT1>
+
+	<conectionoracle_bosb>
+		Data Source=(DESCRIPTION=
+		(ADDRESS=(PROTOCOL=TCP)(HOST=172.16.42.30)(PORT=1568))
+		(CONNECT_DATA=
+		(SERVER=DEDICATED)
+		(SERVICE_NAME=bosb)));
+		User Id=report;Password=Fl!e#X27Ja!N20#22RpT
+	</conectionoracle_bosb>
+
+	<conectionoracle_bodb>
+		Data Source=(DESCRIPTION=
+		(ADDRESS=(PROTOCOL=TCP)(HOST=172.16.30.30)(PORT=1521))
+		(CONNECT_DATA=
+		(SERVER=DEDICATED)
+		(SERVICE_NAME=bodb)));
+		User Id=report;Password=Fl!e#X27Ja!N20#22RpT
+	</conectionoracle_bodb>
+
+	<ConMigration_BO2>
+		Data Source=(DESCRIPTION=
+		(ADDRESS=(PROTOCOL=TCP)(HOST=172.16.30.30)(PORT=1521))
+		(CONNECT_DATA=
+		(SERVER=DEDICATED)
+		(SERVICE_NAME=bodb)));
+		User Id=report;Password=Fl!e#X27Ja!N20#22RpT
+	</ConMigration_BO2>
+
+
+	<connectionOracle_SVMIG>
+		Data Source=(DESCRIPTION=
+		(ADDRESS=(PROTOCOL=TCP)(HOST=172.16.42.21)(PORT=1568))
+		(CONNECT_DATA=
+		(SERVER=DEDICATED)
+		(SERVICE_NAME=bosit)));
+		User Id=report;Password=sV##2o2!#bnf#q3
+	</connectionOracle_SVMIG>
+
+	<connectionOracle_INH>
+		data source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=DREXA-SCAN1)(PORT=1734))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=HKLDB1DBRW)));user ID=FCJHKLRPT2;Password=FLeX!07Nov#20!24rPT
+	</connectionOracle_INH>
+
+
+</connection>

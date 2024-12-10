@@ -1,0 +1,2761 @@
+private void V_web_atmcard_infor()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj2.ATMTrx_by_Office_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "atmcard_infor");
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=atmcard_infor.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_web_EXPIRE_DM_BY_CUSTYPE_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj2.EXPIRE_DM_BY_CUSTYPE_FE(DateTime.Parse(End_date.Text));
+            // dt = obj2.CL_web_test(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "EXPIRE_DM_BY_CUSTYPE");
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=EXPIRE_DM_BY_CUSTYPE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_PERBLOCK_DM_BY_CUST_TYPE_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj2.P_PERBLOCK_DM_BY_CUST_TYPE_FE(DateTime.Parse(Start_date.Text),DateTime.Parse(End_date.Text));
+            // dt = obj2.CL_web_test(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "PERBLOCK_DM_BY_CUST_TYPE");
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=PERBLOCK_DM_BY_CUST_TYPE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_CARDBLOCK_DM_BY_CUST_TYPE_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj2.P_CARDBLOCK_DM_BY_CUST_TYPE_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            // dt = obj2.CL_web_test(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "CARDBLOCK_DM_BY_CUST_TYPE");
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=CARDBLOCK_DM_BY_CUST_TYPE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_ATM_CARD_LISTING_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj2.P_ATM_CARD_LISTING_FE( DateTime.Parse(End_date.Text));
+            // dt = obj2.CL_web_test(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "ATM_CARD_LISTING");
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=ATM_CARD_LISTING.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_ATM_ACTIVE_LISTING_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj2.P_ATM_ACTIVE_LISTING_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            // dt = obj2.CL_web_test(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "ATM_ACTIVE_LISTING");
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=ATM_ACTIVE_LISTING.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_ATM_TRN_LISTING_fe()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj2.P_ATM_TRN_LISTING_fe(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            // dt = obj2.CL_web_test(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "ATM_TRN_LISTING_fe");
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=ATM_TRN_LISTING_fe.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_ATM_Maintenance_Fee_BO()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj2.P_ATM_Maintenance_Fee_BO(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            // dt = obj2.CL_web_test(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "ATM_Maintenance_Fee");
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=ATM_Maintenance_Fee.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //----03-Dialy_ATM_Card_request_and_pending ----///
+    private void V_D_Card_request_pending()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj3.D_Card_request_pending(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Card_request_pending");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Card_request_pending.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_D_Card_request_report()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj3.D_Card_request_report(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Card_request_report");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Card_request_report.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //---04-Dialy_ATM_Mobile_report_by_respcode-----///
+    private void V_D_ATM_MB_Respcode()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj4.D_ATM_MB_Respcode(DateTime.Parse (Start_date.Text),DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "ATM_MB_Respcode");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=ATM_MB_Respcode.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_D_Daily_ATM_MB_listing()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj4.D_Daily_ATM_MB_listing(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "ATM_MB_Respcode");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=ATM_MB_Respcode.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //----05-Finger_Print_by_Terminal_Day---////
+    private void v_D_Finger_Print_by_Terminal_Day()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj5.D_Finger_Print_by_Terminal_Day(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Finger_Print_by_Terminal_Day");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Finger_Print_by_Terminal_Day.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_D_Finger_Print_By_Device()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj5.D_Finger_Print_By_Device(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Finger_Print_By_Device");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Finger_Print_By_Device.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_D_Finger_Print_By_User()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj5.D_Finger_Print_By_User(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Finger_Print_By_User");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Finger_Print_By_User.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    ///----06-MB_DB_Daily_Report---////
+    private void V_D_MB_Daily_TRN_Report()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj6.D_MB_Daily_TRN_Report(DateTime.Parse(Start_date.Text));
+            wb.Worksheets.Add(dt, "MB_Daily_TRN_Report");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=MB_Daily_TRN_Report.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_D_MB_TRNCount_BY_RespCode()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj6.D_MB_TRNCount_BY_RespCode(DateTime.Parse(Start_date.Text));
+            wb.Worksheets.Add(dt, "MB_TRNCount_BY_RespCode");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=MB_TRNCount_BY_RespCode.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    ///----09-Terminal_today---///
+    private void V_D_Terminal_Today()
+    {   
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj7.D_Terminal_Today(DateTime.Parse(Start_date.Text),DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Terminal_Today");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Terminal_Today.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //----19-Post_cash_to_from_atm----///
+    private void v_D_P_POST_CASH_TO_FROM_ATM()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj8.D_P_POST_CASH_TO_FROM_ATM(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "POST_CASH_TO_FROM_ATM");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=POST_CASH_TO_FROM_ATM.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //---15-Mobile_Banking_Info--//
+    private void V_MB_Trn_Listing()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj9.MB_Trn_Listing(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "MB_Trn_Listing");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=MB_Trn_Listing.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_MB_Active_Listing()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj9.MB_Active_Listing(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "MB_Active_Listing");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=MB_Active_Listing.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //--16-Remittance_Entry_Listing--//
+    private void V_Remittance_Entry()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj10.REMITTANCE_ENTRY_LISTING(Start_date.Text,End_date.Text);
+            wb.Worksheets.Add(dt, "REMITTANCE_ENTRY");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=REMITTANCE_ENTRY.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //--22-CashDenoRemaining--//
+    private void V_AMOUNTDENOREMAIN()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj11.AMOUNTDENOREMAIN(DateTime.Parse(Start_date.Text),DateTime.Parse (End_date.Text));
+            wb.Worksheets.Add(dt, "AMOUNTDENOREMAIN");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=AMOUNTDENOREMAIN.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_CASHDONOREMAIN()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj11.CASHDONOREMAIN(DateTime.Parse (Start_date.Text),DateTime.Parse( End_date.Text));
+            wb.Worksheets.Add(dt, "CASHDONOREMAIN");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=CASHDONOREMAIN.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_Num_trns_CWD_by_week()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj11.Num_trns_CWD_by_week(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Num_trns_CWD_by_week");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=CASHDONOREMAIN.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_Num_Cash_in_on_ATM()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj11.Num_Cash_in_on_ATM(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Num_Cash_in_on_ATM");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Num_Cash_in_on_ATM.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_Cash_Withdrawal_by_Terminal()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj11.Cash_Withdrawal_by_Terminal(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Cash_Withdrawal_by_Terminal");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Cash_Withdrawal_by_Terminal.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //--08-Monthly_ATM_Management_report--//
+    private void V_P_Num_Cardholder_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_Num_Cardholder_FE(DateTime.Parse( End_date.Text));
+            wb.Worksheets.Add(dt, "P_Num_Cardholder_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=P_Num_Cardholder_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_Num_Card_Issue_by_Status_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_Num_Card_Issue_by_Status_FE(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Num_Card_Issue_by_Status_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Num_Card_Issue_by_Status_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_Num_CardIssue_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_Num_CardIssue_FE(DateTime.Parse(Start_date.Text),DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Num_CardIssue_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Num_CardIssue_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_Num_Txn_by_trnType_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_Num_Txn_by_trnType_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Num_Txn_by_trnType_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Num_Txn_by_trnType_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_Num_ATMTermnal_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_Num_ATMTermnal_FE(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Num_ATMTermnal_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Num_ATMTermnal_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_AMT_ATMTxn_BY_TxnType_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_AMT_ATMTxn_BY_TxnType_FE(DateTime.Parse(Start_date.Text),DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "AMT_ATMTxn_BY_TxnType_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=AMT_ATMTxn_BY_TxnType_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_NUM_ATMTxn_by_CustType_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_NUM_ATMTxn_by_CustType_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "NUM_ATMTxn_by_CustType_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=NUM_ATMTxn_by_CustType_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_Num_ATMTrn_by_Card_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_Num_ATMTrn_by_Card_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Num_ATMTrn_by_Card_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Num_ATMTrn_by_Card_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_FEE_From_ATMTxn_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_FEE_From_ATMTxn_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "FEE_From_ATMTxn_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=FEE_From_ATMTxn_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_AMT_Txn_by_TID_by_Size_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_AMT_Txn_by_TID_by_Size_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "AMT_Txn_by_TID_by_Size_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=AMT_Txn_by_TID_by_Size_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_FEE_ATMTxn_by_TID_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_FEE_ATMTxn_by_TID_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "FEE_ATMTxn_by_TID_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=FEE_ATMTxn_by_TID_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_AMT_ATMTxn_By_TID_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_AMT_ATMTxn_By_TID_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "AMT_ATMTxn_By_TID_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=AMT_ATMTxn_By_TID_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_ATMTrx_by_Office_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_ATMTrx_by_Office_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "ATMTrx_by_Office_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=ATMTrx_by_Office_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_CARD_ISSUE_LIST_RPT()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_CARD_ISSUE_LIST_RPT(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "CARD_ISSUE_LIST_RPT");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=CARD_ISSUE_LIST_RPT.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_EXPIRE_DM_BY_CUSTYPE_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_EXPIRE_DM_BY_CUSTYPE_FE(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "P_EXPIRE_DM_BY_CUSTYPE_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=P_EXPIRE_DM_BY_CUSTYPE_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_PERBLOCK_DM_BY_CUST_TYPE_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_PERBLOCK_DM_BY_CUST_TYPE_FE(DateTime.Parse(Start_date.Text),DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "PERBLOCK_DM_BY_CUST_TYPE_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=PERBLOCK_DM_BY_CUST_TYPE_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_CARDBLOCK_DM_BY_CUST_TYPE_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_CARDBLOCK_DM_BY_CUST_TYPE_FE(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "CARDBLOCK_DM_BY_CUST_TYPE_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=CARDBLOCK_DM_BY_CUST_TYPE_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_ATM_CARD_LISTING_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_ATM_CARD_LISTING_FE(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "ATM_CARD_LISTING_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=ATM_CARD_LISTING_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_ATM_ACTIVE_LISTING_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_ATM_ACTIVE_LISTING_FE(DateTime.Parse(Start_date.Text),DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "ATM_ACTIVE_LISTING_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=ATM_ACTIVE_LISTING_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_P_ATM_TRN_LISTING_fe()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_ATM_TRN_LISTING_fe(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "P_ATM_TRN_LISTING_fe");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=P_ATM_TRN_LISTING_fe.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_Num_CardReIssue_BO()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_Num_CardReIssue_BO(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Num_CardReIssue_BO");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Num_CardReIssue_BO.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_Num_PINReIssue_BO()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_Num_PINReIssue_BO(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Num_CardReIssue_BO");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Num_CardReIssue_BO.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_Num_CardBlock_BO()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_Num_CardBlock_BO(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Num_CardBlock_BO");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Num_CardBlock_BO.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_FEE_Card_Issue_CBS()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_FEE_Card_Issue_CBS(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "FEE_Card_Issue_CBS");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=FEE_Card_Issue_CBS.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_FEE_Card_ReIssue_CBS()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_FEE_Card_ReIssue_CBS(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "FEE_Card_ReIssue_CBS");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=FEE_Card_ReIssue_CBS.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_FEE_PinReissue_CBS()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_FEE_PinReissue_CBS(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "FEE_PinReissue_CBS");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=FEE_PinReissue_CBS.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_FEE_CardMaintenance_CBS()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_FEE_CardMaintenance_CBS(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "FEE_CardMaintenance_CBS");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=FEE_CardMaintenance_CBS.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_FEE_ATMTxn_CBS()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj12.P_FEE_ATMTxn_CBS();
+            wb.Worksheets.Add(dt, "FEE_ATMTxn_CBS");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=FEE_ATMTxn_CBS.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //---17-NBC_Report----//
+    private void V_TOTAL_CARD_ISSUE_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_TOTAL_CARD_ISSUE_FE(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "TOTAL_CARD_ISSUE_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=TOTAL_CARD_ISSUE_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_NUMBER_ATM_WITHDRAWAL_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_NUMBER_ATM_WITHDRAWAL_FE(DateTime.Parse(Start_date.Text),DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "NUMBER_ATM_WITHDRAWAL_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=NUMBER_ATM_WITHDRAWAL_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_AMOUNT_ATM_WITHDRAWAL_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_AMOUNT_ATM_WITHDRAWAL_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "AMOUNT_ATM_WITHDRAWAL_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=AMOUNT_ATM_WITHDRAWAL_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_NUMBERE_ATM_DEPOSIT_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_NUMBERE_ATM_DEPOSIT_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "NUMBERE_ATM_DEPOSIT_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=NUMBERE_ATM_DEPOSIT_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_AMOUNT_ATM_DEPOSIT_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_AMOUNT_ATM_DEPOSIT_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "AMOUNT_ATM_DEPOSIT_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=AMOUNT_ATM_DEPOSIT_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_NUMBER_ATM_PAYMENT_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_NUMBER_ATM_PAYMENT_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "NUMBER_ATM_PAYMENT_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=NUMBER_ATM_PAYMENT_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_AMOUNT_ATM_PAYMENT_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_AMOUNT_ATM_PAYMENT_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "AMOUNT_ATM_PAYMENT_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=AMOUNT_ATM_PAYMENT_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_MB_UTILITY_PAYMENT_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_MB_UTILITY_PAYMENT_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "MB_UTILITY_PAYMENT_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=MB_UTILITY_PAYMENT_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_MB_FT_KHR_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_MB_FT_KHR_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "MB_FT_KHR_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=MB_FT_KHR_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_MB_FT_USD_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_MB_FT_USD_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "MB_FT_USD_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=MB_FT_USD_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_Card_Issue_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_Card_Issue_FE(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Card_Issue_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Card_Issue_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_NUM_ATM_WITHDRAWAL_LIST_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_NUM_ATM_WITHDRAWAL_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "NUM_ATM_WITHDRAWAL_LIST_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=NUM_ATM_WITHDRAWAL_LIST_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_AMT_ATM_WITHDRAWAL_LIST_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_AMT_ATM_WITHDRAWAL_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "AMT_ATM_WITHDRAWAL_LIST_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=AMT_ATM_WITHDRAWAL_LIST_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_NUM_ATM_DEPOSIT_LIST_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_NUM_ATM_DEPOSIT_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "NUM_ATM_DEPOSIT_LIST_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=NUM_ATM_DEPOSIT_LIST_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_AMT_ATM_DEPOSIT_LIST_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_AMT_ATM_DEPOSIT_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "AMT_ATM_DEPOSIT_LIST_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=AMT_ATM_DEPOSIT_LIST_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_NUM_ATM_PAYMENT_LIST_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_NUM_ATM_PAYMENT_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "NUM_ATM_PAYMENT_LIST_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=NUM_ATM_PAYMENT_LIST_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_AMT_ATM_PAYMENT_LIST_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_AMT_ATM_PAYMENT_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "AMT_ATM_PAYMENT_LIST_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=AMT_ATM_PAYMENT_LIST_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_MB_UTILITY_LIST_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_MB_UTILITY_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "MB_UTILITY_LIST_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=MB_UTILITY_LIST_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_MB_FT_KHR_LIST_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_MB_FT_KHR_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "MB_FT_KHR_LIST_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=MB_FT_KHR_LIST_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_MB_FT_USD_LIST_FE()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj13.P_MB_FT_USD_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "MB_FT_USD_LIST_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=MB_FT_USD_LIST_FE.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //--18-Transaction_Terminal---///
+    private void V_trn_by_terminal()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj14.trn_by_terminal(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "trn_by_terminal");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=trn_by_terminal.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    ///---23-ACCOUNTCARD_MAPPING---///
+    private void V_Issuecard()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj15.Issuecard(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Issuecard");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Issuecard.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    private void V_Addmoreaccount()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj15.Addmoreaccount(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Addmoreaccount");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=Addmoreaccount.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+	
+	
+	//----19-Post_cash_to_from_atm----///
+    
+    //---all_ATM_CardrequestPending...///
+    private void V_all_ATM_CardrequestPending()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            dt1 = obj3.D_Card_request_pending(DateTime.Parse(End_date.Text));
+            dt2 = obj3.D_Card_request_report(DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt1, "Card_request_pending");
+            wb.Worksheets.Add(dt2, "Card_request_report");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=all_ATM_CardrequestPending.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            this.dl.logfile(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //---All_ATMMobile_by_respcode...///
+    private void V_All_ATMMobile_by_respcode()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            dt1 = obj4.D_ATM_MB_Respcode(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt2 = obj4.D_Daily_ATM_MB_listing(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt1, "ATM_MB_Respcode");
+            wb.Worksheets.Add(dt2, "Daily_ATM_MB_listing");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=All_ATMMobile_by_respcode.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            this.dl.logfile(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //---All_FingerPrint_byTemrinal...///
+    private void V_All_FingerPrint_byTemrinal()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            DataTable dt3 = new DataTable();
+            dt1 = obj5.D_Finger_Print_by_Terminal_Day(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt2 = obj5.D_Finger_Print_By_Device(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt3 = obj5.D_Finger_Print_By_User(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt1, "Finger_Print_by_Terminal_Day");
+            wb.Worksheets.Add(dt2, "Finger_Print_By_Device");
+            wb.Worksheets.Add(dt3, "Finger_Print_By_User");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=All_FingerPrint_byTemrinal.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            this.dl.logfile(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //---All_MBDM_Daily...///
+    private void V_All_MBDM_Daily()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            dt1 = obj6.D_MB_Daily_TRN_Report(DateTime.Parse(Start_date.Text));
+            dt2 = obj6.D_MB_TRNCount_BY_RespCode(DateTime.Parse(Start_date.Text));
+            wb.Worksheets.Add(dt1, "MB_Daily_TRN_Report");
+            wb.Worksheets.Add(dt2, "MB_TRNCount_BY_RespCode");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=All_MBDM_Daily.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            this.dl.logfile(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //---All_Terminal...///
+    private void V_All_Terminal()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj7.D_Terminal_Today(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "Terminal_Today");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=All_Terminal_Today.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            this.dl.logfile(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //---All_Post_cash_to_from_atm...///
+    private void V_All_Post_cash_to_from_atm()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            DataTable dt3 = new DataTable();
+            DataTable dt4 = new DataTable();
+            DataTable dt5 = new DataTable();
+            DataTable dt6 = new DataTable();
+            DataTable dt7 = new DataTable();
+            DataTable dt8 = new DataTable();
+            dt1 = obj2.ATMTrx_by_Office_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt2 = obj2.EXPIRE_DM_BY_CUSTYPE_FE(DateTime.Parse(End_date.Text));
+            dt3 = obj2.P_PERBLOCK_DM_BY_CUST_TYPE_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt4 = obj2.P_CARDBLOCK_DM_BY_CUST_TYPE_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt5 = obj2.P_ATM_CARD_LISTING_FE(DateTime.Parse(End_date.Text));
+            dt6 = obj2.P_ATM_ACTIVE_LISTING_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt7 = obj2.P_ATM_TRN_LISTING_fe(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt8 = obj2.P_ATM_Maintenance_Fee_BO(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt1, "ATMTrx_by_Office");
+            wb.Worksheets.Add(dt2, "EXPIRE_DM_BY_CUSTYPE");
+            wb.Worksheets.Add(dt3, "PERBLOCK_DM_BY_CUST_TYPE");
+            wb.Worksheets.Add(dt4, "CARDBLOCK_DM_BY_CUST_TYPE");
+            wb.Worksheets.Add(dt5, "ATM_CARD_LISTING");
+            wb.Worksheets.Add(dt6, "ATM_ACTIVE_LISTING");
+            wb.Worksheets.Add(dt7, "ATM_TRN_LISTING");
+            wb.Worksheets.Add(dt8, "ATM_Maintenance_Fee");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=All_Post_cash_to_from_atm.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            this.dl.logfile(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //---all_Mobile_Banking_Info--///
+    private void V_all_Mobile_Banking_Info()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            dt1 = obj9.MB_Trn_Listing(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt2 = obj9.MB_Active_Listing(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt1, "MB_Trn_Listing");
+            wb.Worksheets.Add(dt2, "MB_Active_Listing");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=all_Mobile_Banking_Info.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            this.dl.logfile(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //--all_Remittance_Entry_Listing--//
+    private void V_all_Remittance_Entry()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj10.REMITTANCE_ENTRY_LISTING(Start_date.Text, End_date.Text);
+            wb.Worksheets.Add(dt, "REMITTANCE_ENTRY");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=all_REMITTANCE_ENTRY.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            this.dl.logfile(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //--all_CashDenoRemaining--//
+    private void V_all_CashDenoRemaining()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            DataTable dt3 = new DataTable();
+            DataTable dt4 = new DataTable();
+            DataTable dt5 = new DataTable();
+            dt1 = obj11.AMOUNTDENOREMAIN(DateTime.Parse(Start_date.Text),DateTime.Parse(End_date.Text));
+            dt2 = obj11.CASHDONOREMAIN(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt3 = obj11.Num_trns_CWD_by_week(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt4 = obj11.Num_Cash_in_on_ATM(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt4 = obj11.Cash_Withdrawal_by_Terminal(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt1, "AMOUNTDENOREMAIN");
+            wb.Worksheets.Add(dt2, "CASHDONOREMAIN");
+            wb.Worksheets.Add(dt3, "Num_trns_CWD_by_week");
+            wb.Worksheets.Add(dt4, "Num_Cash_in_on_ATM");
+            wb.Worksheets.Add(dt5, "Cash_Withdrawal_by_Terminal");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=all_CashDenoRemaining.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            this.dl.logfile(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //--all_ATMMGT--//
+    private void V_all_ATMMGT()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            DataTable dt3 = new DataTable();
+            DataTable dt4 = new DataTable();
+            DataTable dt5 = new DataTable();
+            DataTable dt6 = new DataTable();
+            DataTable dt7 = new DataTable();
+            DataTable dt8 = new DataTable();
+            DataTable dt9 = new DataTable();
+            DataTable dt10 = new DataTable();
+            DataTable dt11 = new DataTable();
+            DataTable dt12 = new DataTable();
+            DataTable dt13 = new DataTable();
+            DataTable dt14 = new DataTable();
+            DataTable dt15 = new DataTable();
+            DataTable dt16 = new DataTable();
+            DataTable dt17 = new DataTable();
+            DataTable dt18 = new DataTable();
+            DataTable dt19 = new DataTable();
+            dt1 = obj12.P_Num_Cardholder_FE(DateTime.Parse(End_date.Text));
+            dt2 = obj12.P_Num_Card_Issue_by_Status_FE(DateTime.Parse(End_date.Text));
+            dt3 = obj12.P_Num_CardReIssue_BO(DateTime.Parse(Start_date.Text),DateTime.Parse(End_date.Text));
+            dt4 = obj12.P_Num_PINReIssue_BO(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt5 = obj12.P_Num_CardBlock_BO(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt6 = obj12.P_Num_Txn_by_trnType_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt7 = obj12.P_FEE_Card_Issue_CBS(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt8 = obj12.P_FEE_Card_ReIssue_CBS(DateTime.Parse(Start_date.Text) ,DateTime.Parse(End_date.Text));
+            dt9 = obj12.P_FEE_PinReissue_CBS(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt10 = obj12.P_FEE_CardMaintenance_CBS(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt11 = obj12.P_FEE_ATMTxn_CBS();
+            dt12 = obj12.P_Num_ATMTermnal_FE(DateTime.Parse(End_date.Text));
+            dt13 = obj12.P_AMT_ATMTxn_BY_TxnType_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt14 = obj12.P_NUM_ATMTxn_by_CustType_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt15 = obj12.P_Num_ATMTrn_by_Card_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt16 = obj12.P_FEE_From_ATMTxn_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt17 = obj12.P_AMT_Txn_by_TID_by_Size_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt18 = obj12.P_FEE_ATMTxn_by_TID_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt19 = obj12.P_AMT_ATMTxn_By_TID_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            
+            wb.Worksheets.Add(dt1, "Num_Cardholder_FE");
+            wb.Worksheets.Add(dt2, "Num_Card_Issue_by_Status_FE");
+            wb.Worksheets.Add(dt3, "Num_CardReIssue_BO");
+            wb.Worksheets.Add(dt4, "Num_PINReIssue_BO");
+            wb.Worksheets.Add(dt5, "Num_CardBlock_BO");
+            wb.Worksheets.Add(dt6, "Num_Txn_by_trnType_FE");
+            wb.Worksheets.Add(dt7, "FEE_Card_Issue_CBS");
+            wb.Worksheets.Add(dt8, "FEE_Card_ReIssue_CBS");
+            wb.Worksheets.Add(dt9, "FEE_PinReissue_CBS");
+            wb.Worksheets.Add(dt10, "FEE_CardMaintenance_CBS");
+            wb.Worksheets.Add(dt11, "FEE_ATMTxn_CBS");
+            wb.Worksheets.Add(dt12, "Num_ATMTermnal_FE");
+            wb.Worksheets.Add(dt13, "AMT_ATMTxn_BY_TxnType_FE");
+            wb.Worksheets.Add(dt14, "NUM_ATMTxn_by_CustType_FE");
+            wb.Worksheets.Add(dt15, "Num_ATMTrn_by_Card_FE");
+            wb.Worksheets.Add(dt16, "FEE_From_ATMTxn_FE");
+            wb.Worksheets.Add(dt17, "AMT_Txn_by_TID_by_Size_FE");
+            wb.Worksheets.Add(dt18, "FEE_ATMTxn_by_TID_FE");
+            wb.Worksheets.Add(dt19, "AMT_ATMTxn_By_TID_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=all_ATMMGT.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            this.dl.logfile(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //--all_NBC_report--//
+    private void V_all_NBC_report()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            DataTable dt3 = new DataTable();
+            DataTable dt4 = new DataTable();
+            DataTable dt5 = new DataTable();
+            DataTable dt6 = new DataTable();
+            DataTable dt7 = new DataTable();
+            DataTable dt8 = new DataTable();
+            DataTable dt9 = new DataTable();
+            DataTable dt10 = new DataTable();
+            DataTable dt11 = new DataTable();
+            DataTable dt12 = new DataTable();
+            DataTable dt13 = new DataTable();
+            DataTable dt14 = new DataTable();
+            DataTable dt15 = new DataTable();
+            DataTable dt16 = new DataTable();
+            DataTable dt17 = new DataTable();
+            DataTable dt18 = new DataTable();
+            DataTable dt19 = new DataTable();
+            DataTable dt20 = new DataTable();
+            dt1 = obj13.P_TOTAL_CARD_ISSUE_FE(DateTime.Parse(End_date.Text));
+            dt2 = obj13.P_NUMBER_ATM_WITHDRAWAL_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt3 = obj13.P_AMOUNT_ATM_WITHDRAWAL_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt4 = obj13.P_NUMBERE_ATM_DEPOSIT_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt5 = obj13.P_AMOUNT_ATM_DEPOSIT_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt6 = obj13.P_NUMBER_ATM_PAYMENT_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt7 = obj13.P_AMOUNT_ATM_PAYMENT_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt8 = obj13.P_MB_UTILITY_PAYMENT_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt9 = obj13.P_MB_FT_KHR_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt10 = obj13.P_MB_FT_USD_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt11 = obj13.P_Card_Issue_FE(DateTime.Parse(End_date.Text));
+            dt12 = obj13.P_NUM_ATM_WITHDRAWAL_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt13 = obj13.P_AMT_ATM_WITHDRAWAL_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt14 = obj13.P_NUM_ATM_DEPOSIT_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt15 = obj13.P_AMT_ATM_DEPOSIT_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt16 = obj13.P_NUM_ATM_PAYMENT_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt17 = obj13.P_AMT_ATM_PAYMENT_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt18 = obj13.P_MB_UTILITY_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt19 = obj13.P_MB_FT_KHR_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt20 = obj13.P_MB_FT_USD_LIST_FE(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            
+
+            wb.Worksheets.Add(dt1, "TOTAL_CARD_ISSUE_FE");
+            wb.Worksheets.Add(dt2, "NUMBER_ATM_WITHDRAWAL_FE");
+            wb.Worksheets.Add(dt3, "AMOUNT_ATM_WITHDRAWAL_FE");
+            wb.Worksheets.Add(dt4, "NUMBERE_ATM_DEPOSIT_FE");
+            wb.Worksheets.Add(dt5, "AMOUNT_ATM_DEPOSIT_FE");
+            wb.Worksheets.Add(dt6, "NUMBER_ATM_PAYMENT_FE");
+            wb.Worksheets.Add(dt7, "AMOUNT_ATM_PAYMENT_FE");
+            wb.Worksheets.Add(dt8, "MB_UTILITY_PAYMENT_FE");
+            wb.Worksheets.Add(dt9, "MB_FT_KHR_FE");
+            wb.Worksheets.Add(dt10, "MB_FT_USD_FE");
+            wb.Worksheets.Add(dt11, "Card_Issue_FE");
+            wb.Worksheets.Add(dt12, "NUM_ATM_WITHDRAWAL_LIST_FE");
+            wb.Worksheets.Add(dt13, "AMT_ATM_WITHDRAWAL_LIST_FE");
+            wb.Worksheets.Add(dt14, "NUM_ATM_DEPOSIT_LIST_FE");
+            wb.Worksheets.Add(dt15, "AMT_ATM_DEPOSIT_LIST_FE");
+            wb.Worksheets.Add(dt16, "NUM_ATM_PAYMENT_LIST_FE");
+            wb.Worksheets.Add(dt17, "AMT_ATM_PAYMENT_LIST_FE");
+            wb.Worksheets.Add(dt18, "MB_UTILITY_LIST_FE");
+            wb.Worksheets.Add(dt19, "MB_FT_KHR_LIST_FE");
+            wb.Worksheets.Add(dt20, "MB_FT_USD_LIST_FE");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=all_NBC_report.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            this.dl.logfile(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //--all_Transaction_Terminal--//
+    private void V_all_Transaction_Terminal()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt = new DataTable();
+            dt = obj14.trn_by_terminal(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt, "trn_by_terminal");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=all_Transaction_Terminal.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            this.dl.logfile(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }
+    //--all_ACCOUNTCARD_MAPPING--//
+    private void V_all_ACCOUNTCARD_MAPPING()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            dt1 = obj15.Issuecard(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            dt2 = obj15.Addmoreaccount(DateTime.Parse(Start_date.Text), DateTime.Parse(End_date.Text));
+            wb.Worksheets.Add(dt1, "Issuecard");
+            wb.Worksheets.Add(dt2, "Addmoreaccount");
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=all_ACCOUNTCARD_MAPPING.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            this.dl.logfile(ex);
+        }
+        finally
+        {
+            sqlc.Close();
+        }
+    }x

@@ -1,0 +1,114 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Test_API_WING;
+using System.Data;
+using System.Data.OracleClient;
+
+public partial class Test_API : System.Web.UI.Page
+{
+    dbcon _conn = new dbcon();
+    OracleConnection _ora = new OracleConnection();
+    logger _log = new logger();
+    GridViewValues _grid = new GridViewValues();
+
+    Test_API_WING.Auto_created_PortTypeClient _wing = new Auto_created_PortTypeClient();
+
+    string _Partner_ID = "";
+    string _loan_NUm = "";
+    string _M_CCY = "";
+    string _PWD = "#Khl$19Wng*UAT";
+    string _trn_date = "";
+    string _Loan_name = "";
+    string _Loan_duedate = "";
+    double pricipleAMT;
+    double int_Amt;
+    double _payment_amt;
+    string _settle_code = "";
+    string _settle_acc = "";
+    string _settle_CCY = "";
+    string _res_code = "";
+    string _res_msg = "";
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        
+    }
+
+
+    public DataTable _getappmasterLaon(string _laon_number)
+    {
+        DataTable dt = new DataTable();
+        try
+        {
+            _ora.ConnectionString = _conn.oracleconUAT1();
+            _ora.Open();
+            string query = "Select cam.dr_prod_ac,cam.customer_id,cam.account_status,cam.* from fcjhklprd.CLTB_ACCOUNT_APPS_MASTER CAM WHere CAM.Account_Status = 'A'  AND CAM.ACCOUNT_NUMBER = '"+ _laon_number + "'";
+            OracleCommand cmd = new OracleCommand(query, _ora);
+            cmd.CommandType = CommandType.Text;
+            dt.Load(cmd.ExecuteReader());
+
+        }
+        catch (Exception ex)
+        {
+            _log.LogError(ex);
+        }
+        finally
+        {
+            _ora.Close();
+            _ora.Dispose();
+            OracleConnection.ClearPool(_ora);
+        }
+        return dt;
+    }
+    public DataTable _getcomponentloan(string _laon_number)
+    {
+        DataTable dt = new DataTable();
+        try
+        {
+            _ora.ConnectionString = _conn.oracleconUAT1();
+            _ora.Open();
+            string query = "Select sc.dr_prod_ac , sc.cr_prod_ac,sc.* from fcjhklprd.Cltb_Account_Components sc where 1=1  And sc.component_name = 'PRINCIPAL'  AND sc.account_number in  '" + _laon_number + "'";
+            OracleCommand cmd = new OracleCommand(query, _ora);
+            cmd.CommandType = CommandType.Text;
+            dt.Load(cmd.ExecuteReader());
+
+        }
+        catch (Exception ex)
+        {
+            _log.LogError(ex);
+        }
+        finally
+        {
+            _ora.Close();
+            _ora.Dispose();
+            OracleConnection.ClearPool(_ora);
+        }
+        return dt;
+    }
+
+    protected void btn_Click(object sender, EventArgs e)
+    {
+        _Partner_ID = T_Partner_ID.Text ;
+        _loan_NUm = T_req_Loan_Number.Text;
+        _M_CCY = T_req_Currency.Text;
+        _wing.Loan_Enquiry(_Partner_ID, ref _loan_NUm, _M_CCY, _PWD, _trn_date, out _Loan_name, out _Loan_duedate, out pricipleAMT, out int_Amt, out _payment_amt, out _settle_code, out _settle_acc, out _settle_CCY, out _res_code, out _res_msg);
+        // Console.WriteLine(_settle_acc);
+        t_loan_number.Text = _loan_NUm;
+        t_loan_currency.Text = _M_CCY;
+        T_loan_name.Text = _Loan_name;
+        T_Loan_DueDate.Text = _Loan_duedate;
+        T_Payment_amount.Text = Convert.ToString ( _payment_amt);
+        T_Settle_code.Text = _settle_code;
+        T_Settle_account.Text = _settle_acc;
+        T_Settle_Currency.Text = _settle_CCY;
+        T_Resp_code.Text = _res_code;
+        T_Resp_Msg.Text = _res_msg;
+
+        _grid._GridviewBinding(grid1, _getappmasterLaon(_loan_NUm));
+        _grid._GridviewBinding(grid2, _getcomponentloan(_loan_NUm));
+
+    }
+}

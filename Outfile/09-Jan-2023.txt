@@ -1,0 +1,40 @@
+Time : 09/01/2023 05:23:09 PM
+.................................................................................
+Message : ORA-06550: line 1, column 29:
+PLS-00302: component 'PR_WING_CBS_SUCCESS_LIST' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+
+Time : 09/01/2023 05:33:08 PM
+.................................................................................
+Message : ORA-06550: line 1, column 29:
+PLS-00302: component 'PR_WING_CBS_SUCCESS_LIST' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+
+Time : 09/01/2023 05:35:45 PM
+.................................................................................
+Message : ORA-06550: line 1, column 29:
+PLS-00302: component 'PR_WING_CBS_SUCCESS_LIST' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+
+Time : 09/01/2023 05:39:48 PM
+.................................................................................
+Message : ORA-06550: line 1, column 29:
+PLS-00302: component 'PR_WING_CBS_SUCCESS_LIST' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+
+Time : 09/01/2023 05:41:32 PM
+.................................................................................
+Message : ORA-06550: line 1, column 29:
+PLS-00302: component 'PR_WING_CBS_SUCCESS_LIST' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+

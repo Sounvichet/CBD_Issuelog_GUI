@@ -1,0 +1,76 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Configuration;
+using System.Text;
+using System.Runtime.InteropServices;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
+using ClosedXML.Excel;
+using MasterReportClass;
+using System.Data.OracleClient;
+using CardClass;
+using TicketClassLibrary;
+
+public partial class Card_Generate_handoff : System.Web.UI.Page
+{
+    OracleConnection obj1 = new OracleConnection();
+    logger _logger = new logger();
+    Card_Module obj2 = new Card_Module();
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Session["USER_NAME"] == null)
+        {
+            ClientScript.RegisterStartupScript(GetType(), "Load", "<script type='text/javascript'>window.location.href = '../issuelog/Default.aspx'; </script>");
+        }
+    }
+    private void V_generate_custacchandoff()
+    {
+        try
+        {
+            XLWorkbook wb = new XLWorkbook();
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            dt1 = obj2.P_Reqfrm_Gen_Cust_HandOff_Hist(DateTime.Parse(T_start_date.Text),DateTime.Parse (T_End_date.Text));
+            dt2 = obj2.P_Reqfrm_Gen_Acc_HandOff_Hist(DateTime.Parse(T_start_date.Text), DateTime.Parse(T_End_date.Text));
+
+            wb.Worksheets.Add(dt1, "custhandoff");
+            wb.Worksheets.Add(dt2, "acchandoff");
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename=custacchandoff.xlsx");
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            wb.SaveAs(memory);
+            memory.WriteTo(Response.OutputStream);
+            Response.Flush();
+            Response.End();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+        finally
+        {
+            obj1.Close();
+        }
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/index.aspx");
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        V_generate_custacchandoff();
+    }
+}

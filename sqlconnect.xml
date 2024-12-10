@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<connection>
+
+  <!--<connectionSQL>
+    Data Source=localhost;
+    Initial Catalog=atmdb;
+    User ID=sa;Password=$HKL@123
+  </connectionSQL>-->
+
+  <!--<connectionSQL>
+    Data Source=localhost\SQLEXPRESS12;
+    Initial Catalog=atmdb;
+    User ID=sa;Password=$HKL@atm3
+  </connectionSQL>-->
+  
+
+   <connectionSQL>
+     Data Source=192.168.0.253;
+     Initial Catalog=atmdb_test;
+     User ID=atm;Password=$HKL@atm
+   </connectionSQL>
+  
+  <!--<connectionSQL>
+    Data Source=192.168.0.253;
+    Initial Catalog=atmdb_test;
+    User ID=atm;Password=$HKL@atm
+  </connectionSQL>-->
+
+</connection>

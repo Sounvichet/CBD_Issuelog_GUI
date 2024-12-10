@@ -1,0 +1,102 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.OleDb;
+using System.IO;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Web.UI.HtmlControls;
+using TicketClassLibrary;
+
+public partial class Ticket_upload : System.Web.UI.Page
+{
+    SqlConnection sqlc = new SqlConnection();
+    logger _logger = new logger();
+    SqlCommand cmd = new SqlCommand();
+    ticketconnection obj = new ticketconnection();
+    Class_fileupload obj_fileupload = new Class_fileupload();
+    dbcon obj1 = new dbcon();
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Session["USER_NAME"] == null)
+        {
+            ClientScript.RegisterStartupScript(GetType(), "Load", "<script type='text/javascript'>window.location.href = '../issuelog/Default.aspx'; </script>");
+        }
+        Label1.Text = ExcelGridView.Rows.Count.ToString();
+        
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/ticket/index.aspx");
+    }
+    private void FillGridFromExcelSheet(string FilePath, string ext, string isHader)
+    {
+        string connectionString = "";
+        if (ext == ".xls")
+        {   //For Excel 97-03
+            connectionString = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source={0};Extended Properties='Excel 8.0;HDR={1}'";
+        }
+        else if (ext == ".xlsx")
+        {    //For Excel 07 and greater
+            connectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source={0};Extended Properties='Excel 8.0;HDR={1}'";
+        }
+        connectionString = String.Format(connectionString, FilePath, isHader);
+        OleDbConnection conn = new OleDbConnection(connectionString);
+        OleDbCommand cmd = new OleDbCommand();
+        OleDbDataAdapter dataAdapter = new OleDbDataAdapter();
+        DataTable dt = new DataTable();
+        cmd.Connection = conn;
+        //Fetch 1st Sheet Name
+        conn.Open();
+        DataTable dtSchema;
+        dtSchema = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+        string ExcelSheetName = dtSchema.Rows[0]["TABLE_NAME"].ToString();
+        conn.Close();
+        //Read all data of fetched Sheet to a Data Table
+        conn.Open();
+        cmd.CommandText = "SELECT * From [" + ExcelSheetName + "]";
+        dataAdapter.SelectCommand = cmd;
+        dataAdapter.Fill(dt);
+        conn.Close();
+        //Bind Sheet Data to GridView
+        ExcelGridView.Caption = Path.GetFileName(FilePath);
+        ExcelGridView.DataSource = dt;
+        ExcelGridView.DataBind();
+    }
+    public void insert_issue_grid()
+    {
+        foreach (GridViewRow gvr in ExcelGridView.Rows)
+        {
+            try
+            {
+                //sqlc.ConnectionString = obj1.Sqlcon();
+                obj.S_command("P_upload_update_ticket", ref cmd);
+                cmd.Parameters.Add("@ID_AUTO", SqlDbType.NVarChar).Value = gvr.Cells[0].Text;
+                cmd.Parameters.Add("@Root_cause_desc", SqlDbType.NVarChar).Value = gvr.Cells[1].Text;
+                cmd.ExecuteNonQuery();
+                Response.Write("<script>alert('Uploaded successfully.')</script>");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex);
+            }
+            finally
+            {
+                sqlc.Close();
+            }
+        }
+    }
+    protected void btnUpload_Click(object sender, EventArgs e)
+    {
+        obj_fileupload.uploadfile(FileUpload1, Label1.Text, ExcelGridView, ddlIsHeaderExists);
+        Label1.Text = ExcelGridView.Rows.Count.ToString();
+    }
+    protected void save_Click1(object sender, EventArgs e)
+    {
+        insert_issue_grid();
+    }
+}

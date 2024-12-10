@@ -1,0 +1,49 @@
+Time : 25/11/2024 10:40:10 AM
+.................................................................................
+Message : ORA-01818: 'HH24' precludes use of meridian indicator
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_BAKONG_CLEARING", line 1142
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/11/2024 11:55:35 AM
+.................................................................................
+Message : ORA-00001: unique constraint (FCJHKLRPT2.TBL_PG_NBC_TRNS_PK) violated
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_BAKONG_CLEARING", line 1143
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/11/2024 12:01:06 PM
+.................................................................................
+Message : ORA-00001: unique constraint (FCJHKLRPT2.TBL_PG_NBC_TRNS_PK) violated
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_BAKONG_CLEARING", line 1143
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/11/2024 01:17:43 PM
+.................................................................................
+Message : ORA-00001: unique constraint (FCJHKLRPT2.TBL_PG_NBC_TRNS_PK) violated
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_BAKONG_CLEARING", line 1143
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/11/2024 01:23:29 PM
+.................................................................................
+Message : ORA-00001: unique constraint (FCJHKLRPT2.TBL_PG_NBC_TRNS_PK) violated
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_BAKONG_CLEARING", line 1143
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/11/2024 01:25:07 PM
+.................................................................................
+Message : ORA-00001: unique constraint (FCJHKLRPT2.TBL_PG_NBC_TRNS_PK) violated
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_BAKONG_CLEARING", line 1143
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/11/2024 01:30:36 PM
+.................................................................................
+Message : ORA-01840: input value not long enough for date format
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_BAKONG_CLEARING", line 1142
+ORA-06512: at line 1
+.................................................................................
+

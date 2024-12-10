@@ -1,0 +1,44 @@
+.rdbBlock td
+		{
+			padding-left: 30px;
+		}
+		.rdbBlock input
+		{
+			margin-left: -30px;
+		}
+        
+        .rbListWrap {
+            width: 100%;
+         }
+
+         .rbListWrap tr td {
+            height:20px;
+            vertical-align: middle;  
+            padding:5px;
+            width: 33%;
+            text-align:left;
+          
+         }
+
+         .rbListWrap input { 
+            float:left;
+           
+         }
+
+         .rbListWrap label { 
+            position: relative;
+            padding-left:20px;
+         }
+         
+         .header-title {
+            width: 500px;
+            height: 30px;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            font-family: Khmer OS Muol Light;
+            font-size: 15pt;
+            border: 1px dashed #ccc;
+            background-color: #f7f7f7;
+        }

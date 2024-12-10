@@ -1,0 +1,56 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.OracleClient;
+using System.Data;
+using System.Runtime.InteropServices;
+using System.IO;
+using System.Data.SqlClient;
+using TicketClassLibrary;
+using CardClass;
+
+public partial class Card_find_acc_issue_card : System.Web.UI.Page
+{
+    OracleConnection obj1 = new OracleConnection();
+    logger _logger = new logger();
+    Card_Module obj2 = new Card_Module();
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Session["USER_NAME"] == null)
+        {
+            ClientScript.RegisterStartupScript(GetType(), "Load", "<script type='text/javascript'>window.location.href = '../issuelog/Default.aspx'; </script>");
+            Label9.Text = grid1.Rows.Count.ToString();
+        }
+        if (!this.IsPostBack)
+        {
+            P_ReqPre_Find_Dupli_Issued();
+        }
+    }
+
+    private void P_ReqPre_Find_Dupli_Issued()
+    {
+        grid1.DataSource = obj2.P_ReqPre_Find_Dupli_Issued();
+        grid1.DataBind();
+        Label9.Text = grid1.Rows.Count.ToString();
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            obj2.delete_find_acc(grid1);
+            Response.Write("<script>alert('Delete successfully.')</script>");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex);
+        }
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Card/Handoff.aspx");
+    }
+}

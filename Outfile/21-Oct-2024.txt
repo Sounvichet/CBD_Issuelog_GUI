@@ -1,0 +1,32 @@
+Time : 21/10/2024 05:17:09 PM
+.................................................................................
+Message : ORA-06550: line 1, column 28:
+PLS-00302: component 'PR_REPORT_VISA_PAYMENT_LIST_BYDATE1' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+
+Time : 21/10/2024 05:17:12 PM
+.................................................................................
+Message : ORA-06550: line 1, column 28:
+PLS-00302: component 'PR_REPORT_VISA_PAYMENT_LIST_BYDATE1' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+
+Time : 21/10/2024 05:22:08 PM
+.................................................................................
+Message : ORA-06550: line 1, column 28:
+PLS-00302: component 'PR_REPORT_VISA_PAYMENT_LIST_BYDATE1' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+
+Time : 21/10/2024 05:22:26 PM
+.................................................................................
+Message : ORA-06550: line 1, column 28:
+PLS-00302: component 'PR_REPORT_VISA_PAYMENT_LIST_BYDATE1' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+

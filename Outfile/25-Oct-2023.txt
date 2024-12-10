@@ -1,0 +1,405 @@
+Time : 25/10/2023 03:07:56 PM
+.................................................................................
+Message : The user name or password is incorrect.
+
+.................................................................................
+
+Time : 25/10/2023 03:07:56 PM
+.................................................................................
+Message : The user name or password is incorrect.
+
+.................................................................................
+
+Time : 25/10/2023 03:08:49 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:49 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:49 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:50 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:50 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:50 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:51 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:51 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:51 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:52 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:52 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:52 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:53 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:53 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:53 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:54 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:54 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:55 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:55 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:56 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:56 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:57 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:57 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:57 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:58 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:08:58 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 469
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:15:55 PM
+.................................................................................
+Message : The user name or password is incorrect.
+
+.................................................................................
+
+Time : 25/10/2023 03:15:55 PM
+.................................................................................
+Message : The user name or password is incorrect.
+
+.................................................................................
+
+Time : 25/10/2023 03:19:45 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:46 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:46 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:47 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:48 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:48 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:49 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:50 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:50 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:50 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:51 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:51 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:51 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:51 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:52 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:52 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:52 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:52 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:53 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:53 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:53 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:53 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:53 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:54 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:54 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 03:19:54 PM
+.................................................................................
+Message : ORA-01858: a non-numeric character was found where a numeric was expected
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_VISA_ACQ_FEE", line 470
+ORA-06512: at line 1
+.................................................................................
+
+Time : 25/10/2023 04:07:57 PM
+.................................................................................
+Message : ORA-02396: exceeded maximum idle time, please connect again
+.................................................................................
+
+Time : 25/10/2023 05:09:45 PM
+.................................................................................
+Message : The user name or password is incorrect.
+
+.................................................................................
+
+Time : 25/10/2023 05:09:45 PM
+.................................................................................
+Message : The user name or password is incorrect.
+
+.................................................................................
+

@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sql_string>
+
+  <css_tran_by_day>
+	  SELECT  CASE WHEN C.ISS_INST='1001' THEN CT.AGENT_CODE
+	  WHEN C.ISS_INST='1001' AND C.ACQ_INST='1001' THEN Substr(C.Atmid,2,3)
+	  WHEN C.ISS_INST='9016' AND C.ACQ_INST='9016' THEN '000'
+	  ELSE Substr(C.Atmid,2,3)
+	  END BRANCH_CODE
+	  ,C.Atmid
+	  ,C.TRACE
+	  ,C.UTRNNO
+	  ,C.RESP
+	  ,case when C.Trans_Type in (609) then get_tag_data(217,c.bpc_addldata)
+	  else C.HPAN end as  CARD_NUM
+	  --,C.HPAN
+	  ,C.ISS_INST
+	  ,C.ACQ_INST
+	  ,C.Receiveid
+	  ,C.PRCODE
+	  ,CASE WHEN C.ISS_INST='1001'  THEN 'Hatthakasekar Limited'
+	  When C.ISS_INST not in ('1001') then ISD.BANK_NAME
+	  END AS ISS_BANK
+	  ,D.BANK_NAME AS ACQ_NAME
+	  ,CASE WHEN GET_TAG_DATA( 1625, C.BPC_ADDLDATA ) = '9116085' THEN 'Hatthakasekar Limited'
+	  When GET_TAG_DATA( 1625, C.BPC_ADDLDATA ) not in  ('9116085') then BNB.BANK_NAME
+	  END AS BNB_NAME
+	  ,C.Switch_Date,C.TRANS_TYPE,C.Currency
+	  ,C.REQAMT/100 AS Tran_Amount
+	  ,C.DEBTFEEAMT/100 AS ACQ_FEE,
+	  C.ACCT1 AS SENDER_ACC,
+	  C.Acct2 AS BNB_ACC,
+	  C.Reversal,
+	  C.ACQINSTID,
+	  Case when c.trans_type = 609 then substr(GET_TAG_DATA( 217, C.BPC_ADDLDATA ),1,7)
+	  else substr (c.track2,2,7) end as ISS_BIN,
+	  GET_TAG_DATA( 1625, C.BPC_ADDLDATA ) as BNB_BIN,
+	  trunc (sysdate) as POST_DATE
+	  FROM CURR_TRANS C
+	  INNER JOIN tbl_net_bin_tab D ON C.ACQINSTID= d.START_BIN
+	  INNER JOIN css_settlement CSS on TO_CHAR(CSS.TRACE_NUMBER,'000000') = TO_CHAR (C.Trace,'000000') and TO_DATE(CSS.SETTLEMENT_DATE,'YYYYMMDD') = :P_DATE
+	  LEFT JOIN CREF_TAB CT ON CT.CREF_NO = case when c.trans_type = 609 then GET_TAG_DATA( 217, C.BPC_ADDLDATA )
+	  else C.Hpan end
+	  LEFT JOIN tbl_net_bin_tab BD ON C.RECEIVEID=BD.BANK_CODE
+	  LEFT JOIN Net_Bin_Tab B ON GET_TAG_DATA( 1625, C.BPC_ADDLDATA ) = B.BANK_CODE
+	  LEFT JOIN tbl_net_bin_tab ISD ON ISD.START_BIN = case when C.Trans_Type = 609 then substr(GET_TAG_DATA( 217, C.BPC_ADDLDATA ),1,7)
+	  else Substr (c.track2,2,7) end
+	  left join tbl_net_bin_tab BNB on BNB.START_BIN = GET_TAG_DATA( 1625, C.BPC_ADDLDATA )
+	  where C.Respcode = '00' and c.trans_type not in (508,782,725)
+	  and c.utrnno not in (Select c.utrnno from CURR_TRANS C1 where C1.Utrnno = C.Utrnno and C1.Reversal = 1 )
+	  AND TO_DATE (c.switch_date,'YYYYMMDD') >=  to_date(:P_DATE,'DD-MON-YYYY') -7
+  </css_tran_by_day>
+  <css_trans_settlement>
+	  SELECT BK.BANK_NAME as BANK
+	  ,S.BANK
+	  ,S.ISS_INST
+	  ,S.ACQINSTID
+	  ,S.BNB_BIN
+	  ,s.CARD_NUMBER
+	  ,TO_CHAR(S.Branch_Code,'000') as Branch_Code
+	  ,S.TRAN_TYPE
+	  ,CASE WHEN S.TRAN_TYPE = 'Cash Withdrawal' THEN S.TRAN_AMOUNT
+	  WHEN S.TRAN_TYPE IN ('Balance Inquiry','Mini Statement','Pin Change') THEN 0
+	  WHEN S.TRAN_TYPE IN ('IBFT2','IBFT3','IBFT4') AND S.CASH_TYPE='OUT CASH' THEN S.TRAN_AMOUNT
+	  WHEN S.TRAN_TYPE='IBFT1' AND S.CASH_TYPE='OUT CASH' THEN 0
+	  WHEN S.TRAN_TYPE IN ('IBFT2','IBFT_HKL_BNB_ONLY') AND S.CASH_TYPE='INCOME CASH' THEN S.TRAN_AMOUNT
+	  WHEN S.TRAN_TYPE IN ('IBFT1','IBFT4','IBFT3') AND S.CASH_TYPE='INCOME CASH' THEN S.TRAN_AMOUNT
+	  END AS Settle_AMOUNT
+	  ,CASE /*WHEN S.TRAN_TYPE = 'Cash Withdrawal' THEN sum(S.ACQ_FEE)*/
+	  WHEN S.TRAN_TYPE IN ('Balance Inquiry','Mini Statement','Pin Change','Cash Withdrawal') THEN S.ACQ_FEE
+	  WHEN S.TRAN_TYPE in  ('IBFT1','IBFT3') AND S.CASH_TYPE='OUT CASH' THEN S.ACQ_FEE
+	  WHEN S.TRAN_TYPE IN ('IBFT2','IBFT4','IBFT3') AND S.CASH_TYPE='OUT CASH' THEN S.ACQ_FEE+S.BNB_FEE
+	  WHEN S.TRAN_TYPE = 'IBFT3' AND S.CASH_TYPE='OUT CASH' THEN S.BNB_FEE
+	  WHEN S.TRAN_TYPE = 'IBFT2' AND S.CASH_TYPE='INCOME CASH' THEN S.ACQ_FEE+S.BNB_FEE
+	  WHEN S.TRAN_TYPE IN ('IBFT1','IBFT4','IBFT3') AND S.CASH_TYPE='INCOME CASH' THEN S.ACQ_FEE
+	  WHEN S.TRAN_TYPE = 'IBFT_HKL_BNB_ONLY' AND S.CASH_TYPE='INCOME CASH' THEN S.BNB_FEE
+	  END AS Settle_FEE
+	  ,S.CASH_TYPE
+	  ,S.TRN_REF_NO
+	  ,S.CURRENY AS QTY
+	  ,TO_CHAR(S.trace_num,'000000') as trace_num
+	  ,S.Tran_Type
+	  ,S.utrnno
+	  FROM (
+	  SELECT T.TRACE_NUM,
+	  CASE WHEN T.ISS_INST='1001' AND T.ACQ_INST='9016' THEN  T.ACQINSTID
+	  WHEN T.ISS_INST='9016' AND T.Acq_Inst='1001' THEN  T.ISS_BIN
+	  WHEN T.ISS_INST='1001' AND T.Acq_Inst='1001' THEN  T.BNB_BIN
+	  WHEN T.ISS_INST='9016' AND T.ACQ_INST='9016' THEN  T.ISS_BIN
+	  END AS BANK,
+	  T.ISS_INST,
+	  T.ACQINSTID,
+	  T.BNB_BIN,
+	  T.Branch_Code,
+	  CASE WHEN T.TRAN_TYPE='751' THEN 'Pin Change'
+	  WHEN T.TRAN_TYPE='704' THEN 'Mini Statement'
+	  WHEN T.TRAN_TYPE='702' THEN 'Balance Inquiry'
+	  WHEN T.TRAN_TYPE='700' THEN 'Cash Withdrawal'
+	  WHEN T.ISS_BIN = T.ACQINSTID AND T.ISS_BIN not in (T.BNB_BIN) AND T.ISS_INST='9016' AND T.ACQ_INST='9016' THEN 'IBFT3_HKL_BNB_ONLY'
+	  WHEN T.ISS_BIN = T.ACQINSTID AND T.ISS_BIN not in (T.BNB_BIN) THEN 'IBFT3'
+	  WHEN T.ISS_BIN = T.BNB_BIN AND T.ISS_BIN not in (T.ACQINSTID) THEN 'IBFT1'
+	  WHEN T.ISS_BIN not in (T.ACQINSTID) AND T.ACQINSTID = T.BNB_BIN THEN 'IBFT2'
+	  WHEN T.ISS_BIN not in (T.ACQINSTID) AND T.ACQINSTID not in (T.BNB_BIN) AND T.ISS_INST='9016' AND T.ACQ_INST='9016' THEN 'IBFT4_HKL_BNB_ONLY'
+	  WHEN T.ISS_BIN not in (T.ACQINSTID) AND T.ACQINSTID not in (T.BNB_BIN) THEN 'IBFT4'
+	  END AS Tran_Type,
+	  T.TRAN_AMOUNT,
+	  T.ISS_FEE,
+	  T.ACQ_FEE,
+	  T.BNB_FEE,
+	  CASE WHEN T.ISS_INST='1001' THEN 'OUT CASH'
+	  WHEN T.ISS_INST='9016' THEN 'INCOME CASH'
+	  END AS CASH_TYPE,
+	  CASE WHEN T.TRAN_CCY='840' THEN 'USD'
+	  WHEN T.TRAN_CCY='116' THEN 'KHR'
+	  END AS CURRENY,
+	  T.UTRNNO,
+	  T.SWITCH_DATE,
+	  S.SETTLEMENT_DATE,
+	  L.Trn_Ref_No AS TRN_REF_NO,
+	  T.ISS_NAME,
+	  T.CARD_NUMBER
+	  FROM Css_Transaction T
+	  INNER JOIN Css_Settlement S ON TO_CHAR(T.Trace_Num,'000000')=TO_CHAR(S.Trace_Number,'000000')
+	  Inner join curr_trans ct on ct.utrnno = t.UTRNNO
+	  LEFT JOIN SWTB_TXN_LOG L ON L.RRN = ct.refnum and l.RESP_CODE = '00'
+	  WHERE S.STATUS='S'
+	  AND TO_DATE(t.SWITCH_DATE,'YYYYMMDD') >= TRUNC (sysdate - 7)
+	  AND TO_DATE(s.SETTLEMENT_DATE,'YYYYMMDD') = :P_DATE
+	  ) S
+	  left join tbl_net_bin_tab BK on BK.START_BIN = S.BANK
+	  where S.UTRNNO not in (Select C1.utrnno from curr_trans C1 where C1.Reversal = 1)
+  </css_trans_settlement>
+  <BAKONG_TOTAL_TRANS>
+	  Select  TRUNC (a.bsa_date) as BSA_DATE , a.userid
+	  , count (*) as TOTAL_TRANS
+	  from TBL_BAKONG_TRNS a
+	  where  a.bsa_date  BETWEEN :SDATE and :EDATE
+	  group by a.bsa_date ,  a.userid
+	  order by a.bsa_date
+  </BAKONG_TOTAL_TRANS>
+  <getconsumerlist>
+		Select  a.bill_id
+		,'L' || substr (a.payment_id,5,15) as customer_ID
+		from offline_bills a
+		inner join private_edc_list b on b.service_ID = a.service_ID
+	</getconsumerlist>
+  <get_ito_fn_push>
+		declare
+		-- Boolean parameters are translated from/to integers:
+		result boolean;
+		begin
+		-- Call the function
+		result := itoapp.fn_push_entries(p_type => :p_type,
+		p_source =>  :p_source,
+		p_reference => :p_reference);
+		-- Convert false/true/null to 0/1/null
+		end;
+		
+   </get_ito_fn_push>
+  <get_ito_fn_del>
+		declare
+		-- Boolean parameters are translated from/to integers:
+		result boolean;
+		begin
+		-- Call the function
+		result := itoapp.FN_DELETE_ENTRIES(p_source =>  :p_source,
+		p_reference => :p_reference);
+		-- Convert false/true/null to 0/1/null
+		end;
+
+	</get_ito_fn_del>
+  <get_del_ITO_after_uploaded>
+	  Delete  from detb_upload_raw_ito t
+	  where t.Sources_Ref = 'WING_DIS_'||:CCY
+	  AND t.Ccy = :CCY and t.value_date = trunc(sysdate)
+  </get_del_ITO_after_uploaded>
+  <get_ito_E_power_monthly>
+	  WITH GETCOUNTTRNS as (
+	  Select
+	  T.FIELD2 as BRANCH_CODE
+	  ,'573159111' as ACCOUNT_NO
+	  ,T.FIELD2 as ACCOUNT_BRANCH
+	  ,'C' as DR_CR
+	  ,T.FIELD4 as CCY
+	  ,count(*) as GETCOUNT
+	  ,case when T.FIELD4 = 'KHR' then 4000
+	  when T.FIELD4 = 'USD' then 1
+	  else null end as EXCHANGE_RATE
+	  ,'N/A' as DEPARTMENT_CODE
+	  ,trunc (SYSDATE) as VALUE_DATE
+	  ,'MSC' as TRN_CODE
+	  ,case when T.FIELD4 = 'KHR' then 'm801'
+	  when T.FIELD4 = 'USD' then 'm802'
+	  else null end as BATCH_NO
+	  ,'_573159111' as BATCH_DESC
+	  ,'381109113' as OFFSET_ACCOUNT
+	  ,'' as RAW_OPT1
+	  ,'' as RAW_OPT2
+	  ,'' as RAW_OPT3
+	  ,'' as RAW_OPT4
+	  ,'' as RAW_OPT5
+
+	  FROM
+	  ( Select 'HKL' as FIELD1
+	  ,RT.Branch_CODE as FIELD2
+	  ,substr (PA.DATA,1,3) ||'-'|| Substr (PA.Data, 4,10) as FIELD3
+	  --,RT.TXN_CCY as FIELD4
+	  ,case when ct.Currency = '116' then 'KHR'
+	  when ct.Currency = '840' then 'USD' end as FIELD4
+	  --,substr(L.TO_ACC,1,4) as Service_ID
+	  ,case when RT.TXN_CCY = 'USD' then TO_CHAR(RT.OFS_AMOUNT,'99999999999.99')
+	  when RT.TXN_CCY = 'KHR' THEN TO_CHAR(RT.OFS_AMOUNT,'99999999999.99') END as FIELD5
+	  ,TO_CHAR(RT.TRN_DT,'yyyy') ||'-'|| TO_CHAR(RT.TRN_DT,'MM') ||'-'|| TO_CHAR(RT.TRN_DT,'DD') as FIELD6
+	  ,TO_CHAR(RT.MAKER_DT_STAMP,'HH24:MI:SS') as FIELD7
+	  ,L.RRN as FIELD8
+	  ,L.TERM_ID as FIELD9
+	  ,'A' as FIELD10
+	  ,'P' as FIELD11
+	  , CASE WHEN BL.Charge_From = 'O' THEN RT.OFS_AMOUNT -  RT.CHG_AMT_1--(CT.Debpfeeamt/100)
+	  WHEN BL.Charge_From = 'T' then RT.OFS_AMOUNT
+	  ELSE NULL END AS AMT_NO_FEE
+	  ,BL.CBS_ID as CBS_ID
+	  ,RT.TRN_REF_NO as TRN_REF
+	  --,TRUNC(TO_DATE(ct.switch_date,'yyyymmdd')) as SWITCH_DATE_REAL
+	  ,RT.TRN_DT as SWITCH_DATE_REAL
+	  FROM Detb_Rtl_Teller RT
+	  inner join SWTB_TXN_LOG L on l.trn_ref_no = RT.Trn_Ref_No and RT.XREF = L.XREF
+	  inner join curr_trans ct on ct.utrnno = trunc(l.rrn) and CT.Reversal = 0
+	  left join t_pmt_trans pa on pa.utrnno = ct.sv_trace and pa.param = '4'
+	  INNER JOIN BILLER_LIST BL on BL.Service_Id = substr(L.TO_ACC,1,4) AND BL.Pro_Type = 'P'
+
+	  union all
+
+	  SELECT 'HKL' AS FIELD1
+	  ,btxn.COD_BRANCH AS FIELD2
+	  ,SUBSTR(BTXN.COD_BILL_NO,1,3) || '-' || SUBSTR(BTXN.COD_BILL_NO,4,LENGTH(BTXN.COD_BILL_NO)) AS FIELD3
+	  ,BTXN.COD_BILL_CCY AS FIELD4
+	  ,CASE WHEN EL.CHARGE_FROM= 'O' THEN TRIM(TO_CHAR((btxn.COD_NET_PAID ),'99999999999.00'))
+	  WHEN EL.CHARGE_FROM= 'T' THEN TRIM(TO_CHAR(btxn.Cod_Bill_Amt,'99999999999.00'))
+	  ELSE NULL
+	  END AS FIELD5
+	  ,to_char(btxn.maker_dt_stamp,'yyyy') || '-' || to_number(TO_CHAR(btxn.maker_dt_stamp,'MM')) || '-' || to_number(TO_CHAR(btxn.maker_dt_stamp,'DD')) AS FIELD6
+	  ,SUBSTR(to_char(btxn.maker_dt_stamp,'HH24:MI:SS'),1,5) AS FIELD7
+	  ,SUBSTR(btxn.cod_reference_no,8,length(btxn.cod_reference_no)) AS FIELD8
+	  ,SUBSTR(BTXN.MAKER_ID,5,LENGTH(BTXN.MAKER_ID)) AS FIELD9
+	  ,'B' AS FIELD10
+	  ,'P' AS FIELD11
+	  ,CASE WHEN EL.CHARGE_FROM='O' THEN btxn.COD_NET_PAID - btxn.Cod_Chg_Amt1
+	  WHEN EL.CHARGE_FROM='T' THEN btxn.Cod_Bill_Amt
+	  ELSE NULL
+	  END AS AMT_NO_FEE
+	  ,EL.CBS_ID
+	  ,TO_CHAR(btxn.Cod_Reference_No) AS TRN_REF
+	  ,trunc(btxn.maker_dt_stamp) AS SWITCH_DATE_REAL
+	  from Uptb_Ptxn_Log btxn
+	  inner join BILLER_LIST EL ON TO_CHAR(EL.CBS_ID)=TO_CHAR(BTXN.COD_INST_ID) AND EL.PRO_TYPE='P'
+	  where btxn.auth_stat='A' and btxn.once_auth='Y' and btxn.record_stat='L'
+	  --AND  SUBSTR(BTXN.MAKER_ID,5,LENGTH(BTXN.MAKER_ID)) not in ('MOBILE')
+	  AND btxn.COD_REFERENCE_NO NOT IN (SELECT R.TRN_REF_NO FROM PRIVATE_EDC_REVERSAL R)
+
+	  ) t
+	  WHERE
+	  T.FIELD4 = :CCY
+	  AND T.SWITCH_DATE_REAL BETWEEN :SDATE AND :EDATE
+	  group by T.FIELD2 ,T.FIELD4 )
+
+
+	  SELECT RANK() OVER (ORDER BY G.BRANCH_CODE,G.ACCOUNT_NO) as CUR_NO
+	  ,G.BRANCH_CODE
+	  ,G.ACCOUNT_NO
+	  ,G.ACCOUNT_BRANCH
+	  ,G.DR_CR
+	  ,G.CCY
+	  ,G.AMOUNT
+	  ,G.EXCHANGE_RATE
+	  ,G.AMOUNT_LCY
+	  --,G.DEPARTMENT_CODE
+	  ,G.VALUE_DATE
+	  ,G.TRN_CODE
+	  ,G.BATCH_NO
+	  ,G.BATCH_DESC
+	  ,G.OFFSET_ACCOUNT
+	  ,G.RAW_OPT1
+	  ,G.RAW_OPT2
+	  ,G.RAW_OPT3
+	  ,G.RAW_OPT4
+	  ,G.RAW_OPT5
+	  FROM
+	  (Select
+	  F.BRANCH_CODE
+	  ,F.ACCOUNT_NO
+	  ,F.BRANCH_CODE as ACCOUNT_BRANCH
+	  ,F.DR_CR
+	  ,F.CCY
+	  ,case when F.CCY = 'KHR' then sum (F.getcount) * 400
+	  when F.CCY = 'USD' then sum (F.getcount) * 0.1
+	  else null end as AMOUNT
+	  ,F.EXCHANGE_RATE
+	  ,case when F.CCY = 'KHR' then ROUND(sum (F.getcount) * 400 / F.EXCHANGE_RATE,2)
+	  when F.CCY = 'USD' then ROUND (sum (F.getcount) * 0.1 / F.EXCHANGE_RATE,2)
+	  else null end as AMOUNT_LCY
+	  ,F.DEPARTMENT_CODE
+	  ,F.VALUE_DATE
+	  ,F.TRN_CODE
+	  ,F.BATCH_NO
+	  ,sum (F.getcount) || F.BATCH_DESC as BATCH_DESC
+	  ,F.OFFSET_ACCOUNT
+	  ,F.RAW_OPT1
+	  ,F.RAW_OPT2
+	  ,F.RAW_OPT3
+	  ,F.RAW_OPT4
+	  ,F.RAW_OPT5
+	  from GETCOUNTTRNS F
+	  group by F.BRANCH_CODE,F.CCY,F.ACCOUNT_NO,F.DR_CR,F.EXCHANGE_RATE,F.DEPARTMENT_CODE,F.VALUE_DATE
+	  ,F.TRN_CODE,F.BATCH_NO,F.BATCH_DESC,F.OFFSET_ACCOUNT,F.RAW_OPT1,F.RAW_OPT2,F.RAW_OPT3,F.RAW_OPT4
+	  ,F.RAW_OPT5
+
+	  union all
+
+	  Select
+	  F.BRANCH_CODE
+	  ,'168000072169' as ACCOUNT_NO
+	  ,'080' as ACCOUNT_BRANCH
+	  ,F.DR_CR
+	  ,F.CCY
+	  ,case when F.CCY = 'KHR' then sum (F.getcount) * 100
+	  when F.CCY = 'USD' then ROUND(sum (F.getcount) * 0.025,2)
+	  else null end as AMOUNT
+	  ,F.EXCHANGE_RATE
+	  ,case when F.CCY = 'KHR' then ROUND(sum (F.getcount) * 100 / F.EXCHANGE_RATE,2)
+	  when F.CCY = 'USD' then ROUND (sum (F.getcount) *0.025 / F.EXCHANGE_RATE,2)
+	  else null end as AMOUNT_LCY
+	  ,F.DEPARTMENT_CODE
+	  ,F.VALUE_DATE
+	  ,F.TRN_CODE
+	  ,F.BATCH_NO
+	  ,sum (F.getcount) || '_168000072169' as BATCH_DESC
+	  ,F.OFFSET_ACCOUNT
+	  ,F.RAW_OPT1
+	  ,F.RAW_OPT2
+	  ,F.RAW_OPT3
+	  ,F.RAW_OPT4
+	  ,F.RAW_OPT5
+	  from GETCOUNTTRNS F
+	  group by F.BRANCH_CODE,F.CCY,F.DR_CR,F.EXCHANGE_RATE,F.DEPARTMENT_CODE,F.VALUE_DATE
+	  ,F.TRN_CODE,F.BATCH_NO,F.OFFSET_ACCOUNT,F.RAW_OPT1,F.RAW_OPT2,F.RAW_OPT3,F.RAW_OPT4
+	  ,F.RAW_OPT5 )G
+  </get_ito_E_power_monthly>
+  <get_ITO_DEL_DETB_UPLOAD>
+	  Delete  DETB_UPLOAD_RAW_ITO 
+  </get_ITO_DEL_DETB_UPLOAD>
+  <PR_DAILY_ATMCARD_ACTIVE_LIST>
+	  Select sca.BRANCH_CODE as ACC_BRN
+	  ,cd.agent_code as ATM_BRN
+	  ,cd.card_id as CARD_ID
+	  ,cd.cref_no as CARD_NUM
+	  ,sca.CUST_NO as CIF
+	  ,sca.CUST_AC_NO as SAVING_ACCT
+	  ,decode (cd.contract_id,'851','MyATM','852','MyVIP','115','MyATM','112','MyVIP','MyATM')  as ATM_CARD_TYPE
+	  --,FN_getcardchdname(cd.card_id ,cat.acct_no ) as cardholder_name
+	  ,CD.EMBOS_NAME as cardholder_name
+	  ,sca.ACCOUNT_CLASS
+	  ,to_date(to_char(decode(length(cd.issue_dt),7, '0' || cd.issue_dt,cd.issue_dt)),'DDMMYYYY') as ISSUED_DATE
+	  ,LAST_DAY(TO_DATE(CD.exp_dt,'YYYYMM')) EXPIRED_DATE
+	  ,decode (cd.cd_capt,'0','VALID','1','CALL_ISSUER','14','FORCE_PIN','20','TEM_BLOCK') as CARD_Status
+	  ,UDF.FIELD_VAL_6 AS STAFF_ID
+	  from cref_tab CD
+	  Inner join card_acct_tab cat on cat.card_no = cd.cref_no and cat.acct_type not in  (0)
+	  inner join sttm_cust_account sca on sca.CUST_AC_NO = cat.acct_no  and sca.RECORD_STAT = 'O'
+	  LEFT JOIN CSTM_FUNCTION_USERDEF_FIELDS UDF ON
+	  sca.BRANCH_CODE || '~' || sca.CUST_AC_NO || '~'= UDF.REC_KEY AND UDF.function_id = 'STDCUSAC'
+	  left join VAPP_DATA_NP ad2 on ad2.ELEMENT_ID = '10000179' and ad2.ELEMENT_VALUE = CD.Card_Id
+	  left join app_application a on (ad2.appl_id) = to_char (a.id)
+	  Where
+	  substr (CD.CREF_NO,1,4) in ('9116','9168')
+	  AND LAST_DAY(TO_DATE(CD.exp_dt,'YYYYMM')) &gt; = :P_SDATE
+	  AND cd.cd_capt in ('0','1','14','20')
+	  AND cat.acct_no not in ('000001915110','000001915123','000001915075')
+	  AND to_date(to_char(decode(length(cd.issue_dt),7, '0' || cd.issue_dt,cd.issue_dt)),'DDMMYYYY') &lt;= :P_SDATE
+  </PR_DAILY_ATMCARD_ACTIVE_LIST>
+	<get_del_ITO_after_uploaded_True>
+		Delete  from detb_upload_raw_ito t
+		where t.Sources_Ref = :p_reference
+		AND t.Ccy = :CCY and t.value_date = trunc(sysdate)
+	</get_del_ITO_after_uploaded_True>
+	<get_VISA_SETTLEMENT_SERVICE_TYPE>
+		Select TO_CHAR(a1.sttl_date)as  sttl_date
+		,case when a1.bus_mode = 1 then 'TOTAL-ACQUIRER'
+		when a1.bus_mode = 2 then 'TOTAL-ISSUER'
+		when a1.bus_mode = 3 then 'TOTAL-OTHER'
+		when a1.bus_mode = 9 then 'NET-SETTLEMENT'
+		end as NAME
+		,case when a1.credit_amount >0 then TO_CHAR((a1.credit_amount/100),'FM9,999,999.00')
+		when a1.credit_amount &lt;=0 then TO_CHAR(a1.credit_amount/100)
+		end as credit_amount
+		,case when a1.debit_amount > 0 then TO_CHAR((a1.debit_amount/100),'FM9,999,999.00')
+		when a1.debit_amount &lt;= 0 then TO_CHAR(a1.debit_amount/100)
+		end as debit_amount
+		,case when a1.net_amount > 0 then  TO_CHAR((a1.net_amount/100),'FM9,999,999.00')
+		when a1.net_amount &lt;=0 then TO_CHAR(a1.net_amount/100)
+		end as NET_AMOUNT
+		from main.VIS_VSS2 a1
+		where a1.sttl_service = :SERVICE_TYPE
+		AND a1.sre_id = case when a1.sttl_service = '139' then '9000642386'
+		when a1.sttl_service = '146' then '9000642389'
+		when a1.sttl_service = '1' then '9000642383' end
+		AND a1.amount_type = 'T'
+		AND a1.sttl_date  between  :P_SDATE and :P_EDATE
+	</get_VISA_SETTLEMENT_SERVICE_TYPE>
+</sql_string>

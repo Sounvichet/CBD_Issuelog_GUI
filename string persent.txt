@@ -1,0 +1,66 @@
+﻿    private string strWeeklyuppercent()
+    {
+        string sqlquery = "Select cast(cast(sum(a.UpMinute) as numeric(19,2))/sum(a.ServMinute)*100 as  numeric(19,4)) as Uppercent ";
+        sqlquery += "from V_NodeUpweekly a WHERE a.NodeTypeID = '2' and a.weekid = datepart (ww,getdate()) and a.YearID = year (getdate())";
+        sqlc.ConnectionString = obj1.Sqlcon();
+        sqlc.Open();
+        SqlCommand cmd = new SqlCommand(sqlquery, sqlc);
+        cmd.CommandType = CommandType.Text;
+        SqlDataReader dr = cmd.ExecuteReader();
+        string id = null;
+        if (dr.Read())
+        {
+            id = dr[0].ToString();
+        }
+        sqlc.Close();
+        return id;
+    }
+    private string strMonthlyuppercent()
+    {
+        string sqlquery = "Select cast(cast(sum(a.UpMinute) as numeric(19,2))/sum(a.ServMinute)*100 as  numeric(19,4)) as Uppercent ";
+        sqlquery += "from V_NodeUpmonthly a WHERE a.NodeTypeID = '2' and a.monthid = month(getdate()) and a.YearID = year(getdate())";
+        sqlc.ConnectionString = obj1.Sqlcon();
+        sqlc.Open();
+        SqlCommand cmd = new SqlCommand(sqlquery, sqlc);
+        cmd.CommandType = CommandType.Text;
+        SqlDataReader dr = cmd.ExecuteReader();
+        string id = null;
+        if (dr.Read())
+        {
+            id = dr[0].ToString();
+        }
+        sqlc.Close();
+        return id;
+    }
+    private string strYearlyuppercent()
+    {
+        string sqlquery = "Select cast(cast(sum(a.UpMinute) as numeric(19, 2)) / sum(a.ServMinute) * 100 as numeric(19, 4)) as Uppercent from V_NodeUpyearly a WHERE a.NodeTypeID = '2' and a.YearID = year(getdate())";
+        sqlc.ConnectionString = obj1.Sqlcon();
+        sqlc.Open();
+        SqlCommand cmd = new SqlCommand(sqlquery, sqlc);
+        cmd.CommandType = CommandType.Text;
+        SqlDataReader dr = cmd.ExecuteReader();
+        string id = null;
+        if (dr.Read())
+        {
+            id = dr[0].ToString();
+        }
+        sqlc.Close();
+        return id;
+    }
+    private string strTotalATM()
+    {
+        string sqlquery = "Select Count(*) as Num from v_NodeBranch where NodeTypeID = '1'";
+        sqlc.ConnectionString = obj1.Sqlcon();
+        sqlc.Open();
+        SqlCommand cmd = new SqlCommand(sqlquery, sqlc);
+        cmd.CommandType = CommandType.Text;
+        SqlDataReader dr = cmd.ExecuteReader();
+        string id = null;
+        if (dr.Read())
+        {
+            id = dr[0].ToString();
+        }
+        sqlc.Close();
+        return id;
+    }

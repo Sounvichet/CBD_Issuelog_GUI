@@ -1,0 +1,84 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content.master" AutoEventWireup="true" CodeFile="upload.aspx.cs" Inherits="Ticket_upload" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+     <section class="content">
+              <div class="row">
+                            <div class="col-xs-12">
+                                   <div class="box">
+                                            <div class="box-header">
+                                                 <h3 class="box-title">Ticket upload</h3>
+                                                
+                                             </div>
+
+                                             <div class="box-body">
+                                                  <div class="row">
+                                                    <div class="col-md-3">
+                                                        <asp:FileUpload ID="FileUpload1" runat="server" /> 
+                                                    </div>
+                                
+                                                    <div class="col-md-3">
+                                                        <asp:DropDownList ID="ddlIsHeaderExists" runat="server" Visible="false">
+                                                        <asp:ListItem Value="Yes">Yes</asp:ListItem>
+                                                        <asp:ListItem Value="No">No</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                         <asp:Button ID="generate" runat="server" Text="Generate" class="btn btn-sm btn-primary" OnClick="btnUpload_Click" />
+                                                         <asp:Button ID="save" runat="server" Text="Save" 
+                                                            class=" btn btn-sm btn-primary" onclick="save_Click1" />
+                                                         <asp:Button ID="Button1" runat="server" Text="Cancel" 
+                                                            class=" btn btn-sm btn-primary" onclick="Button1_Click" />
+                                                    </div>
+                                                     </div>
+
+                                                    <div class="row">
+                                                        <div class=" col-lg-12">
+                                                            <table width="100%">
+                                                                <tr>
+                                                                    <td style=" width:4%; border:0px solid white;"><span id="Span1" style="color:Blue; font-size:15px;">Gridview</span></td>
+                                                                    <td style=" width:96%; border:0px solid white;"><hr /></td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                           <div class="col-lg-12">
+                                                           <div class="table-responsive">
+                                                              <asp:GridView ID="ExcelGridView" runat="server" AutoGenerateColumns="true" CssClass="table table-bordered table-striped" Width="100%">
+                                                                     <AlternatingRowStyle BackColor="White" />
+                                                             <RowStyle BackColor="#EFF3FB" />
+                                                               <EditRowStyle BackColor="#2461BF" />
+                                                               <FooterStyle BackColor="#507CD1" ForeColor="White" Font-Bold="True" />
+                                                               <PagerStyle ForeColor="White" HorizontalAlign="Center" BackColor="#2461BF" />
+                                                               <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                               <HeaderStyle BackColor="#507CD1" Font-Bold="true" ForeColor="White" />
+                                                               <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                                               <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                                               <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                                               <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                                               <PagerStyle HorizontalAlign = "left" CssClass = "GridPager" />
+                                                            </asp:GridView>
+                                                           </div> 
+                                                           </div>
+                                                        </div>
+
+                                                   <div class = "row">
+                                                        <div class="col-lg-12">
+                                                             <asp:Label ID="Label2" runat="server" Text="Records :" ForeColor="Blue"></asp:Label>
+                                                            <asp:Label ID="Label1" runat="server" Text="Label" ForeColor="Blue"></asp:Label>
+                                                        </div>
+                                                    </div>
+
+                                                  <div class = "row">
+                                                        <div class="col-lg-12">
+                                                             <label runat="server" style="color: red;" id="lblErrorMessage" visible="false"></label>
+                                     
+                                                        </div>
+                                                    </div>
+
+                                             </div>
+                                    </div>
+                            </div>
+              </div>
+         </section>
+</asp:Content>
+

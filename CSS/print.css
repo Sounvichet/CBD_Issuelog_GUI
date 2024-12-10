@@ -1,0 +1,4 @@
+/* print.css */
+header, footer, aside, nav, form {
+  display: none;
+}

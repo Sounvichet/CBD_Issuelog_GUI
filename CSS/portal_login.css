@@ -1,0 +1,38 @@
+.filter-found .enter .menu-name, .filter-found .enter .fa {
+	color: #F15922;
+}
+
+.kh {
+    font-family: 'Khmer OS Battambang', 'Maven Pro', Roboto, Hanuman !important;
+	vertical-align: baseline;
+	line-height: 2.4rem !important;
+}
+
+@media print {
+  a[href]:after {
+    content: none !important;
+  }
+}
+
+.input-errors {
+    color: #dd4b39;
+}
+
+.box-body.box-detail h3 {
+    font-size: 18px;
+    font-style: italic;
+}
+
+.box-tag {
+	border: solid;
+    border-width: thin;
+    padding: 2px 5px;
+    border-radius: 2px;
+    color: #555;
+    border-color: #ccc;
+    box-shadow: none;
+    border-style: outset;
+}
+
+/*filter option*/
+table.filters tr td {display: inline-block;}

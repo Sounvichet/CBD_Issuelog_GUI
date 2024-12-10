@@ -1,0 +1,40 @@
+Time : 04/06/2024 11:32:38 AM
+.................................................................................
+Message : ORA-06550: line 1, column 21:
+PLS-00225: subprogram or cursor 'PR_ADDFC_INFO' reference is out of scope
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+
+Time : 04/06/2024 11:41:19 AM
+.................................................................................
+Message : ORA-06550: line 1, column 21:
+PLS-00225: subprogram or cursor 'PR_ADDFC_INFO' reference is out of scope
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+
+Time : 04/06/2024 11:41:19 AM
+.................................................................................
+Message : ORA-06550: line 1, column 21:
+PLS-00225: subprogram or cursor 'PR_ADDFC_INFO' reference is out of scope
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+
+Time : 04/06/2024 11:43:07 AM
+.................................................................................
+Message : ORA-06550: line 1, column 21:
+PLS-00225: subprogram or cursor 'PR_ADDFC_INFO' reference is out of scope
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+
+Time : 04/06/2024 11:43:08 AM
+.................................................................................
+Message : ORA-06550: line 1, column 21:
+PLS-00225: subprogram or cursor 'PR_ADDFC_INFO' reference is out of scope
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+

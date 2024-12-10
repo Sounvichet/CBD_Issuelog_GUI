@@ -1,0 +1,24 @@
+﻿ <ul class="treeview-menu">
+                                          <asp:Repeater ID="rptChildMenu1" runat="server">
+                                                <ItemTemplate>  
+                                                    <li>
+                                                          <a href="<%# Page.ResolveClientUrl((string)Eval("weburl")+"?Menuid="+Eval("ID"))%>">
+                                                                <i class="<%#Eval("iconcode")%>"></i> <%#Eval("funcdesc")%>
+                                                                 <span class="pull-right-container">
+                                                                     <small class="label pull-right bg-red">
+                                                                     <asp:Label ID="SubLabelCount" runat="server" Text="Label"></asp:Label>
+                                                                     </small>
+                                                                     </span>
+                                                                <asp:Label ID="SubLabelID" runat="server" Text='<%#Eval("Functype")%>' Visible="false"></asp:Label><%-- Text='<%#Eval("SubMenu_ID")%>'  Old --%>
+                                                            </a>
+
+                                                    </li>
+                                                </ItemTemplate>  
+                                          </asp:Repeater>
+                                     </ul>
+
+
+
+									   <small class="label pull-right bg-blue">
+                                    <asp:Label ID="Count" runat="server" Text='<%# Eval("FuncType") %>' <%--Text='<%# Eval("Menu_ID") %>'--%> ></asp:Label> 
+                                </small>

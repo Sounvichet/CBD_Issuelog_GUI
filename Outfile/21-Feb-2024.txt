@@ -1,0 +1,15 @@
+Time : 21/02/2024 04:31:33 PM
+.................................................................................
+Message : ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'PR_INSERT_BILLER_DISPUTE'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+
+Time : 21/02/2024 04:54:29 PM
+.................................................................................
+Message : ORA-12899: value too large for column "FCJHKLRPT2"."TBL_TELCO_DISPUTE"."TYPE_OF_PIN" (actual: 13, maximum: 10)
+ORA-06512: at "FCJHKLRPT2.HTB_PKG_TELCO_DISPUTED", line 90
+ORA-06512: at line 1
+.................................................................................
+

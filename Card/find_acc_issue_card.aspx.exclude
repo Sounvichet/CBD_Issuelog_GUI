@@ -1,0 +1,54 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content.master" AutoEventWireup="true" CodeFile="find_acc_issue_card.aspx.cs" Inherits="Card_find_acc_issue_card" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+      <section class="content">
+              <div class="row">
+                            <div class="col-xs-12">
+                                   <div class="box">
+                                            <div class="box-header">
+                                                 <h3 class="box-title" style = "color:Maroon;">Delete Find account issue card</h3>
+                                             </div>
+                                        <div class="box-body">
+                                             <div class = "row">
+                                                <div class ="col-lg-12" align = "center">
+                                                    <asp:Button ID="Button1" runat="server" Text="Apply" 
+                                                        CssClass="btn btn-sm btn-primary" onclick="Button1_Click" />
+                                                    <asp:Button ID="Button2" runat="server" Text="Cancel" 
+                                                        CssClass="btn btn-sm btn-primary" onclick="Button2_Click" />
+                                                </div>
+                                            </div>
+                                            <hr />
+
+                                            <div class ="row">
+                                                    <div class = "col-lg-12 table-responsive" align = "center">
+                                                    <asp:GridView ID="grid1" CssClass="table table-sm table-bordered" runat="server" Font-Size="Small" AutoGenerateColumns="true" GridLines="None" RowStyle-Wrap="false">
+                                                        <AlternatingRowStyle BackColor="White" />
+                                                        <Columns>
+                                                        </Columns>
+                                                        <RowStyle BackColor="#EFF3FB" />
+                                                        <EditRowStyle BackColor="#2461BF" />
+                                                        <FooterStyle BackColor="#507CD1" ForeColor="White" Font-Bold="True" />
+                                                        <PagerStyle ForeColor="White" HorizontalAlign="Center" BackColor="#2461BF" />
+                                                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                        <HeaderStyle BackColor="#507CD1" Font-Bold="true" ForeColor="White" />
+                                                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                                        </asp:GridView>
+                                                    </div>
+                                                </div>
+
+                                             <div class="row">
+                                                   <div class="col-lg-12">
+                                                    <asp:Label ID="Label8" runat="server" Text="Records:" ForeColor="#3333FF" Visible="true"></asp:Label>
+                                                    <asp:Label ID="Label9" runat="server" Visible="true" ForeColor="Blue"></asp:Label>
+                                                   </div>
+                                               </div>
+                                        </div>
+                                    </div>
+                            </div>
+              </div>
+       </section>
+</asp:Content>
+

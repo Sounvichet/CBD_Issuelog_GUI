@@ -1,0 +1,24 @@
+Time : 16/12/2022 04:22:13 PM
+.................................................................................
+Message : ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'PR_ITO_E_POWER_MONTHLY'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+
+Time : 16/12/2022 04:29:00 PM
+.................................................................................
+Message : ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'PR_ITO_E_POWER_MONTHLY'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+
+Time : 16/12/2022 04:29:06 PM
+.................................................................................
+Message : ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'PR_ITO_E_POWER_MONTHLY'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+.................................................................................
+
